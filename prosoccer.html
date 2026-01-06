@@ -1,0 +1,1272 @@
+<!DOCTYPE html>  <html lang="tr">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">  
+    <title>ProSoccer 2026 - Ultra Edition</title>  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  
+    <style>  
+        :root {  
+            --primary: #2ecc71; /* Çim yeşili */  
+            --dark: #1a1a1a;  
+            --darker: #121212;  
+            --light: #ecf0f1;  
+            --accent: #e74c3c; /* Kırmızı kart/uyarı */  
+            --gold: #f1c40f;  
+            --zuuks-orange: #ff8000;
+            --efootball-pink: #ff00ff;
+            --efootball-lime: #00ff00;
+            --glass: rgba(20, 20, 20, 0.9);  
+        }  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; user-select: none; }  
+      
+    body {  
+        background-color: var(--darker);  
+        color: var(--light);  
+        height: 100vh;  
+        overflow: hidden;  
+        background-image: url('https://images.unsplash.com/photo-1518091043644-c1d4457512c6?q=80&w=2000&auto=format&fit=crop');   
+        background-size: cover;  
+        background-position: center;  
+        background-attachment: fixed;  
+    }  
+
+    /* Sayfa Yapısı */  
+    .page {  
+        display: none;  
+        flex-direction: column;  
+        height: 100%;  
+        width: 100%;  
+        background: var(--glass);  
+        backdrop-filter: blur(5px);  
+        position: absolute;  
+        top: 0;  
+        left: 0;  
+        overflow-y: auto;  
+        padding: 20px;  
+        animation: fadeIn 0.5s ease;  
+    }  
+
+    .active { display: flex !important; }  
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }  
+
+    /* --- YENİ ZUUKS INTRO --- */
+    #intro-page {
+        background: #ffffff !important; 
+        z-index: 100000;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        transition: opacity 1s ease-out;
+    }
+
+    .zuuks-logo-container {
+        text-align: center;
+        width: 100%;
+        animation: logoScale 2s ease-in-out forwards;
+    }
+
+    .zuuks-text {
+        font-family: 'Arial Black', Gadget, sans-serif; 
+        font-size: 15vw; 
+        color: #1a1a1a;
+        letter-spacing: -5px; 
+        font-weight: 900;
+        font-style: italic; 
+        text-transform: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .r-container {
+        background-color: var(--zuuks-orange);
+        color: white;
+        padding: 0 10px;
+        margin-left: 2px;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+    }
+
+    .r-plus {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: white;
+        font-size: 25px;
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    @keyframes logoScale {
+        0% { transform: scale(0.8); opacity: 0; }
+        20% { opacity: 1; }
+        80% { transform: scale(1); opacity: 1; }
+        100% { transform: scale(1.05); opacity: 1; }
+    }
+    
+    /* --- SOCCER STAR BAŞLAMA EKRANI --- */
+    #start-screen {
+        background: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=2000&auto=format&fit=crop') no-repeat center center !important;
+        background-size: cover !important;
+        backdrop-filter: none !important;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .lightning-effect {
+        position: absolute;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent, rgba(0,0,0,0.7));
+        top: 0; left: 0;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .top-nav-container {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        z-index: 100;
+    }
+
+    .hamburger-dropdown {
+        position: absolute;
+        top: 50px;
+        right: 0;
+        background: var(--glass);
+        border: 1px solid var(--primary);
+        border-radius: 10px;
+        width: 180px;
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    .hamburger-dropdown div {
+        padding: 12px;
+        border-bottom: 1px solid #333;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .hamburger-dropdown div:hover { background: var(--primary); color: #000; }
+
+    .start-menu-btn {
+        font-size: 28px;
+        color: #fff;
+        cursor: pointer;
+        background: rgba(0,0,0,0.5);
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    .start-center-logo {
+        position: absolute;
+        top: 50px; 
+        left: 50%;
+        transform: translateX(-50%); 
+        z-index: 5;
+        text-align: center;
+        width: 100%;
+    }
+
+    .bottom-start-container {
+        position: absolute;
+        bottom: 15%;
+        width: 100%;
+        text-align: center;
+        z-index: 6;
+    }
+
+    .btn-big-start {
+        background: linear-gradient(#2ecc71, #27ae60);
+        color: #fff;
+        padding: 20px 80px;
+        font-size: 24px;
+        font-weight: 900;
+        border-radius: 15px;
+        border: 4px solid #fff;
+        box-shadow: 0 10px 0 #1e8449, 0 0 30px rgba(46, 204, 113, 0.4);
+        display: inline-block;
+        cursor: pointer;
+        text-transform: uppercase;
+        position: relative;
+    }
+
+    /* EL ANİMASYONU FIX - GÜNCELLENDİ */
+    .tutorial-hand {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: url('https://cdn-icons-png.flaticon.com/512/2037/2037237.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        z-index: 9999;
+        pointer-events: none;
+        display: none;
+    }
+
+    @keyframes handTap {
+        0% { transform: scale(1) translate(0, 0); }
+        50% { transform: scale(0.8) translate(5px, 5px); }
+        100% { transform: scale(1) translate(0, 0); }
+    }
+
+    .hand-animating {
+        animation: handTap 0.6s infinite ease-in-out;
+    }
+
+    /* Formlar */  
+    .form-container {  
+        max-width: 400px;  
+        margin: auto;  
+        text-align: center;  
+        background: rgba(0,0,0,0.8);  
+        padding: 30px;  
+        border-radius: 15px;  
+        border: 1px solid var(--primary);  
+        box-shadow: 0 0 20px rgba(46, 204, 113, 0.2);  
+    }  
+
+    input, select {  
+        width: 100%;  
+        padding: 15px;  
+        margin: 10px 0;  
+        background: #333;  
+        border: 1px solid #444;  
+        color: white;  
+        border-radius: 8px;  
+        font-size: 16px;  
+    }  
+
+    .btn {  
+        width: 100%;  
+        padding: 15px;  
+        margin-top: 10px;  
+        border: none;  
+        border-radius: 8px;  
+        font-size: 16px;  
+        font-weight: bold;  
+        cursor: pointer;  
+        transition: 0.3s;  
+        display: block;
+        text-align: center;
+        text-decoration: none;
+    }  
+
+    .btn-primary { background: var(--primary); color: #000; }  
+    .btn-secondary { background: #34495e; color: white; }  
+    .btn-danger { background: var(--accent); color: white; }  
+    .btn-speed { background: var(--gold); color: #000; width: auto; display: inline-block; padding: 10px 20px; }  
+
+    .link-text {  
+        display: block;  
+        margin-top: 15px;  
+        color: var(--light);  
+        text-decoration: underline;  
+        cursor: pointer;  
+        font-size: 14px;  
+    }  
+
+    .card-grid {  
+        display: grid;  
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));  
+        gap: 15px;  
+        padding-bottom: 50px;  
+    }  
+
+    .card {  
+        background: rgba(255,255,255,0.1);  
+        padding: 15px;  
+        border-radius: 10px;  
+        text-align: center;  
+        cursor: pointer;  
+        border: 1px solid transparent;  
+    }  
+
+    .card:hover { border-color: var(--primary); background: rgba(46, 204, 113, 0.1); }  
+    .card img { width: 50px; height: 50px; margin-bottom: 10px; }  
+    .card h3 { font-size: 14px; margin-bottom: 5px; }  
+    .card p { font-size: 12px; color: #aaa; }  
+
+    .modal {  
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;  
+        background: rgba(0,0,0,0.95);  
+        display: none;  
+        justify-content: center;  
+        align-items: center;  
+        z-index: 1000;  
+    }  
+    .contract-paper {  
+        background: #ecf0f1;  
+        color: #000;  
+        padding: 30px;  
+        width: 90%;  
+        max-width: 500px;  
+        border-radius: 5px;  
+        font-family: 'Courier New', Courier, monospace;  
+        position: relative;  
+    }  
+    .contract-paper h2 { text-align: center; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px; }  
+    .contract-sign-area { margin-top: 20px; border-top: 1px dashed #000; padding-top: 10px; }  
+
+    .header {  
+        display: flex; justify-content: space-between; align-items: center;  
+        padding: 10px 0; border-bottom: 1px solid #333; margin-bottom: 20px;  
+    }  
+    .menu-btn { font-size: 24px; cursor: pointer; }  
+    .money-badge { background: var(--gold); color: #000; padding: 5px 10px; border-radius: 20px; font-weight: bold; font-size: 14px; }  
+      
+    .match-card {  
+        background: linear-gradient(45deg, #111, #222);  
+        border: 1px solid var(--primary);  
+        border-radius: 15px;  
+        padding: 20px;  
+        text-align: center;  
+        margin-bottom: 20px;  
+    }  
+    .versus { display: flex; justify-content: space-around; align-items: center; margin: 20px 0; }  
+    .team-logo-lg { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 20px; }  
+      
+    .sidebar {  
+        position: fixed; top: 0; right: -250px; width: 250px; height: 100%;  
+        background: #111; border-left: 2px solid var(--primary);  
+        transition: 0.3s; z-index: 2000; padding: 20px;  
+    }  
+    .sidebar.open { right: 0; }  
+    .sidebar ul { list-style: none; margin-top: 50px; }  
+    .sidebar li { padding: 15px 0; border-bottom: 1px solid #333; cursor: pointer; }  
+
+    .match-screen-ui { text-align: center; }  
+    .commentary-box {  
+        height: 150px; overflow-y: auto; background: rgba(0,0,0,0.5);  
+        border: 1px solid #555; padding: 10px; margin: 20px 0; text-align: left;  
+        font-size: 14px;  
+    }  
+    .commentator { display: flex; gap: 10px; margin-bottom: 10px; align-items: center; }  
+    .comm-avatar { width: 40px; height: 40px; border-radius: 50%; background: #555; flex-shrink: 0; }  
+    .man { border: 2px solid #3498db; background-image: url('https://cdn-icons-png.flaticon.com/512/4140/4140048.png'); background-size: cover; }  
+    .woman { border: 2px solid #e91e63; background-image: url('https://cdn-icons-png.flaticon.com/512/6997/6997662.png'); background-size: cover; }  
+    .scoreboard { font-size: 40px; font-weight: bold; margin: 20px 0; font-family: monospace; }  
+    .timer { font-size: 20px; color: var(--primary); }  
+
+    .player-list-item {  
+        display: flex; justify-content: space-between; align-items: center;  
+        background: #222; margin-bottom: 5px; padding: 10px; border-radius: 5px;  
+    }  
+    .overall-badge {  
+        background: #333; width: 30px; height: 30px; display: flex;   
+        align-items: center; justify-content: center; border-radius: 5px; font-weight: bold;  
+        color: var(--primary);  
+    }  
+
+    .toast {  
+        position: fixed; top: 20px; left: 50%; transform: translateX(-50%);  
+        background: var(--primary); color: #000; padding: 10px 20px;  
+        border-radius: 20px; z-index: 3000; display: none; font-weight: bold;  
+    }  
+
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }  
+    th, td { padding: 8px; text-align: center; border-bottom: 1px solid #333; }  
+    th { background: #222; }  
+    tr:nth-child(1) td { color: var(--gold); font-weight: bold; } 
+    tr:nth-child(2) td, tr:nth-child(3) td { color: #3498db; } 
+
+    .tactics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .tactic-card { background: rgba(0,0,0,0.4); padding: 10px; border-radius: 10px; border: 1px solid #444; }
+    .tactic-card label { font-size: 12px; color: var(--primary); display: block; margin-bottom: 5px; }
+
+    .pitch-slot { 
+        width: 50px; height: 50px; background: rgba(255,255,255,0.2); 
+        border: 1px dashed white; border-radius: 50%; 
+        display: flex; align-items: center; justify-content: center; 
+        font-size: 10px; cursor: pointer; color: white;
+    }
+    .pitch-slot.occupied { background: var(--primary); border-style: solid; color: black; font-weight: bold; }
+
+</style>
+
+</head>  
+<body>  
+
+<div id="intro-page">  
+    <div class="zuuks-logo-container">
+        <div class="zuuks-text">
+            ProSocce<div class="r-container">r<span class="r-plus">+</span></div>
+        </div>
+    </div>
+</div>
+
+<div id="start-screen" class="page">
+    <div class="lightning-effect"></div>
+    
+    <div class="top-nav-container">
+        <div class="start-menu-btn" onclick="toggleHamburger()">
+            <i class="fa-solid fa-bars"></i>
+            <div id="hamburger-menu" class="hamburger-dropdown">
+                <div onclick="showPage('login-page')">Giriş Yap</div>
+                <div onclick="showPage('register-page')">Kayıt Ol</div>
+                <div onclick="showPage('forgot-password-page')">Şifremi Unuttum</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="start-center-logo">
+        <div class="zuuks-text" style="color: white; font-size: 11vw; text-shadow: 2px 2px 20px rgba(0,0,0,1);">
+            ProSocce<div class="r-container">r<span class="r-plus">+</span></div>
+        </div>
+    </div>
+
+    <div class="bottom-start-container">
+        <div id="tutorial-hand" class="tutorial-hand"></div>
+        <button id="main-start-btn" class="btn-big-start" onclick="startBtnClicked()">BAŞLA</button>
+    </div>
+</div>
+
+<div id="toast" class="toast">Bildirim</div>  
+
+<audio id="sound-goal" src="https://www.myinstants.com/media/sounds/goal-sound-effect.mp3"></audio>
+<audio id="sound-whistle" src="https://www.myinstants.com/media/sounds/referee-whistle.mp3"></audio>
+<audio id="sound-click" src="https://www.myinstants.com/media/sounds/button-press.mp3"></audio>
+
+<div id="login-page" class="page" style="justify-content: center;">  
+    <div class="form-container">  
+        <h1 style="margin-bottom:20px; color:var(--primary);">ProSoccer <i class="fa-solid fa-futbol"></i></h1>  
+        <h2>GİRİŞ YAP</h2>  
+        <input type="text" id="login-username" placeholder="Kullanıcı Adı">  
+        <input type="password" id="login-password" placeholder="Şifre">  
+        <button class="btn btn-primary" onclick="handleLogin()">GİRİŞ YAP</button>  
+        <span class="link-text" onclick="showPage('register-page')">Kayıt olmadın mı?</span>  
+        <span class="link-text" onclick="showPage('start-screen')">Geri Dön</span>  
+    </div>  
+</div>  
+
+<div id="register-page" class="page" style="justify-content: center;">  
+    <div class="form-container">  
+        <h2>KAYIT OL</h2>  
+        <input type="text" id="reg-username" placeholder="Kullanıcı Adı (min 8 haneli, sayı içermeli)">  
+        <input type="email" id="reg-email" placeholder="Gmail (@gmail.com)">  
+        <input type="password" id="reg-password" placeholder="Şifre (min 8 haneli, sayı içermeli)">  
+        <button class="btn btn-secondary" onclick="handleRegister()">KAYIT OL</button>  
+        <span class="link-text" onclick="showPage('forgot-password-page')">Şifremi Unuttum</span>  
+        <span class="link-text" onclick="showPage('login-page')">Giriş'e Dön</span>  
+    </div>  
+</div>  
+
+<div id="forgot-password-page" class="page" style="justify-content: center;">  
+    <div class="form-container">  
+        <h2>ŞİFREMİ UNUTTUM</h2>  
+        <p style="font-size:12px; color:#aaa; margin-bottom:10px;">Kayıtlı bilgilerinizi giriniz.</p>  
+        <input type="text" id="forgot-username" placeholder="Kullanıcı Adı">  
+        <input type="email" id="forgot-email" placeholder="Gmail">  
+        <button class="btn btn-danger" onclick="handleForgotCheck()">Sorgula</button>  
+        <span class="link-text" onclick="showPage('login-page')">Geri</span>  
+    </div>  
+</div>  
+
+<div id="reset-password-page" class="page" style="justify-content: center;">  
+    <div class="form-container">  
+        <h2>ŞİFRE SIFIRLAMA</h2>  
+        <input type="password" id="new-pass-1" placeholder="Yeni Şifre (8 hane + sayı)">  
+        <input type="password" id="new-pass-2" placeholder="Yeni Şifre (Tekrar)">  
+        <button class="btn btn-primary" onclick="handleResetPassword()">Şifreyi Yenile</button>  
+    </div>  
+</div>  
+
+<div id="league-select-page" class="page">  
+    <div class="header">
+        <div onclick="showPage('start-screen')"><i class="fa-solid fa-arrow-left"></i> Geri</div>
+        <h2 style="text-align:center; flex:1;">Lig Seç</h2>  
+    </div>
+    <div class="card-grid">  
+        <div class="card" onclick="selectLeague('super-lig')">  
+            <i class="fa-solid fa-flag" style="font-size:30px; color:#e74c3c;"></i>  
+            <h3>Süper Lig</h3>  
+            <p>Türkiye</p>  
+        </div>  
+        <div class="card" onclick="selectLeague('premier-lig')">  
+            <i class="fa-solid fa-crown" style="font-size:30px; color:#9b59b6;"></i>  
+            <h3>Premier Lig</h3>  
+            <p>İngiltere</p>  
+        </div>  
+        <div class="card" onclick="selectLeague('la-liga')">  
+            <i class="fa-solid fa-sun" style="font-size:30px; color:#f1c40f;"></i>  
+            <h3>La Liga</h3>  
+            <p>İspanya</p>  
+        </div>  
+    </div>  
+</div>  
+
+<div id="team-select-page" class="page">  
+    <div class="header">
+        <div onclick="showPage('league-select-page')"><i class="fa-solid fa-arrow-left"></i> Liglere Dön</div>
+        <h2 style="text-align:center; flex:1;">Takım Seç</h2>  
+    </div>
+    <div id="team-list" class="card-grid">  
+        </div>  
+</div>  
+
+<div id="contract-modal" class="modal">  
+    <div class="contract-paper">  
+        <h2>RESMİ SÖZLEŞME</h2>  
+        <p><strong>Takım:</strong> <span id="contract-team-name"></span></p>  
+        <p><strong>Değer:</strong> <span id="contract-team-value"></span></p>  
+        <p><strong>Oyuncu Sayısı:</strong> <span id="contract-player-count"></span></p>  
+        <p style="margin-top:20px; font-size:12px;">  
+            Bu sözleşmeyi imzalayarak kulübün tüm sorumluluğunu almayı,   
+            maçlara çıkmayı ve finansal yönetimi üstlenmeyi kabul ediyorsunuz.  
+        </p>  
+        <div class="contract-sign-area">  
+            <p>Kullanıcı: <span id="contract-user-name">Misafir</span></p>  
+            <button class="btn btn-primary" onclick="signContract()">İMZALA VE BAŞLA</button>  
+            <button class="btn btn-danger" style="margin-top:5px;" onclick="closeModal()">İPTAL</button>  
+        </div>  
+    </div>  
+</div>  
+
+<div id="dashboard-page" class="page">  
+    <div class="header">  
+        <div style="font-weight:bold;">ProSoccer</div>  
+        <div class="money-badge"><i class="fa-solid fa-coins"></i> <span id="user-money">0</span>M</div>  
+        <div class="menu-btn" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></div>  
+    </div>  
+
+    <div class="match-card">  
+        <h3 style="color:#aaa; font-size:14px;">SIRADAKİ MAÇ</h3>  
+        <div class="versus">  
+            <div style="text-align:center;">  
+                <div class="team-logo-lg" id="home-logo" style="background:gold; color:black;">EV</div>  
+                <span id="home-name">Fenerbahçe</span>  
+            </div>  
+            <div style="font-size:24px; font-weight:bold;">VS</div>  
+            <div style="text-align:center;">  
+                <div class="team-logo-lg" id="away-logo" style="background:gray; color:white;">DEP</div>  
+                <span id="away-name">Galatasaray</span>  
+            </div>  
+        </div>  
+        <p style="font-size:12px; margin-bottom:10px;">Lig Konumu: <span id="opponent-rank">2.</span> Sıra</p>  
+        <button id="start-match-btn" class="btn btn-primary" onclick="goToMatchScreen()">MAÇI BAŞLAT</button>  
+        <div id="cooldown-timer" style="margin-top:10px; color:var(--accent); display:none;">Sonraki maç: <span id="cd-time">00:30</span></div>  
+    </div>  
+
+    <div style="background:rgba(0,0,0,0.5); padding:10px; border-radius:10px;">  
+        <h4>Lig Durumu (İlk 5)</h4>  
+        <div id="mini-standings"></div>  
+    </div>  
+</div>  
+
+<div id="sidebar" class="sidebar">  
+    <div style="text-align:right; font-size:24px;" onclick="toggleSidebar()">&times;</div>  
+    <ul>  
+        <li onclick="showPage('dashboard-page'); toggleSidebar()">Ana Sayfa</li>  
+        <li onclick="showSquad(); toggleSidebar()">Kadrom</li>  
+        <li onclick="showTransferList(); toggleSidebar()">Transfer Listesi</li>  
+        <li onclick="showFormation(); toggleSidebar()">Diziliş</li>  
+        <li onclick="showTactics(); toggleSidebar()">Taktikler</li>  
+        <li onclick="showStandings(); toggleSidebar()">Puan Durumu</li>  
+        <li onclick="logout(); toggleSidebar()" style="color:var(--accent);">Çıkış Yap</li>  
+    </ul>  
+</div>  
+
+<div id="match-screen-page" class="page match-screen-ui">  
+    <div class="header">  
+        <h3>MAÇ GÜNÜ</h3>  
+        <button id="speed-btn" class="btn-speed" onclick="toggleSpeed()">HIZ: 1X</button>  
+    </div>  
+    <div style="display:flex; justify-content:space-between; padding:20px;">  
+         <div id="m-home-name">EV</div>  
+         <div class="timer" id="match-timer">00:00</div>  
+         <div id="m-away-name">DEP</div>  
+    </div>  
+    <div class="scoreboard">  
+        <span id="score-home">0</span> - <span id="score-away">0</span>  
+    </div>  
+      
+    <div class="commentary-box" id="commentary-feed">  
+        </div>  
+
+    <button id="start-simulation-btn" class="btn btn-primary" onclick="startMatchSimulation()">BAŞLAMA DÜDÜĞÜ</button>
+    <div id="half-time-controls" style="display:none;">
+        <p style="color:var(--gold); margin-bottom:10px;">İLK YARI BİTTİ!</p>
+        <button class="btn btn-secondary" onclick="showTactics()">TAKTİK DEĞİŞTİR</button>
+        <button class="btn btn-primary" onclick="resumeMatchSimulation()">2. YARIYA BAŞLA</button>
+    </div>
+    <button id="end-match-btn" class="btn btn-secondary" style="display:none;" onclick="endMatch()">MAÇTAN ÇIK</button>  
+    <button id="match-stats-btn" class="btn btn-secondary" style="display:none;" onclick="showMatchStats()">İSTATİSTİKLER</button>  
+      
+    <div id="match-stats-panel" style="display:none; text-align:left; font-size:12px; margin-top:20px; background:rgba(0,0,0,0.6); padding:15px; border-radius:10px;">  
+        <h4 style="border-bottom:1px solid #555; padding-bottom:5px;">Maç Özeti</h4>  
+        <p id="stats-goals" style="color:var(--primary);">Goller: </p>  
+        <p id="stats-assists" style="color:var(--gold);">Asistler: </p>
+        <p id="stats-cards" style="color:var(--accent);">Kartlar: </p>  
+    </div>  
+</div>  
+
+<div id="squad-page" class="page">  
+    <div class="header">  
+         <div onclick="showPage('dashboard-page')"><i class="fa-solid fa-arrow-left"></i></div>  
+         <div>KADROM</div>  
+         <div></div>  
+    </div>  
+    <div style="text-align:center; padding:10px;">  
+        <h2 id="squad-team-name"></h2>  
+        <p>Toplam Değer: <span id="squad-total-value">0M</span></p>  
+    </div>  
+    <div id="my-players-list">  
+        </div>  
+</div>  
+
+<div id="transfer-page" class="page">  
+    <div class="header">  
+        <div onclick="showPage('dashboard-page')"><i class="fa-solid fa-arrow-left"></i></div>  
+        <div>TRANSFER MARKET</div>  
+        <div><span id="transfer-money"></span>M</div>  
+    </div>  
+    <div id="transfer-list-container">  
+        </div>  
+    <div style="margin-top:30px;">  
+        <h3>Transfer Geçmişi</h3>  
+        <ul id="transfer-history" style="font-size:12px; color:#aaa; list-style:none;"></ul>  
+    </div>  
+</div>  
+
+<div id="standings-page" class="page">  
+    <div class="header">  
+        <div onclick="showPage('dashboard-page')"><i class="fa-solid fa-arrow-left"></i></div>  
+        <div>PUAN DURUMU</div>  
+        <div></div>  
+    </div>  
+    <table>  
+        <thead>  
+            <tr>  
+                <th>Sıra</th>  
+                <th>Takım</th>  
+                <th>O</th>  
+                <th>P</th>  
+                <th>Av</th>  
+            </tr>  
+        </thead>  
+        <tbody id="standings-body"></tbody>  
+    </table>  
+</div>  
+
+<div id="formation-page" class="page">  
+    <div class="header">  
+        <div onclick="showPage('dashboard-page')"><i class="fa-solid fa-arrow-left"></i></div>  
+        <div>DİZİLİŞ (4-4-2)</div>  
+        <div></div>  
+    </div>  
+    <div style="text-align:center; margin-top:20px;">  
+        <p style="font-size:12px; color:#aaa; margin-bottom:10px;">Mevkilere tıklayarak oyuncu yerleştirin.</p>  
+        <div id="soccer-pitch" style="background:linear-gradient(#2ecc71, #27ae60); width:280px; height:400px; margin:0 auto; border:4px solid white; position:relative; border-radius:5px;">  
+            <div class="pitch-slot" id="pos-KL" style="position:absolute; bottom:10px; left:115px;" onclick="selectPlayerForPos('KL')">KL</div>  
+            <div class="pitch-slot" id="pos-SLB" style="position:absolute; bottom:80px; left:10px;" onclick="selectPlayerForPos('SLB')">SLB</div>  
+            <div class="pitch-slot" id="pos-STP1" style="position:absolute; bottom:80px; left:80px;"
+ onclick="selectPlayerForPos('STP1')">STP</div>  
+            <div class="pitch-slot" id="pos-STP2" style="position:absolute; bottom:80px; left:150px;" onclick="selectPlayerForPos('STP2')">STP</div>  
+            <div class="pitch-slot" id="pos-SĞB" style="position:absolute; bottom:80px; left:220px;" onclick="selectPlayerForPos('SĞB')">SĞB</div>  
+              
+            <div class="pitch-slot" id="pos-SLK" style="position:absolute; top:180px; left:10px;" onclick="selectPlayerForPos('SLK')">SLK</div>  
+            <div class="pitch-slot" id="pos-OS1" style="position:absolute; top:180px; left:80px;" onclick="selectPlayerForPos('OS1')">OS</div>  
+            <div class="pitch-slot" id="pos-OS2" style="position:absolute; top:180px; left:150px;" onclick="selectPlayerForPos('OS2')">OS</div>  
+            <div class="pitch-slot" id="pos-SĞK" style="position:absolute; top:180px; left:220px;" onclick="selectPlayerForPos('SĞK')">SĞK</div>  
+
+            <div class="pitch-slot" id="pos-SNT1" style="position:absolute; top:50px; left:60px;" onclick="selectPlayerForPos('SNT1')">SNT</div>  
+            <div class="pitch-slot" id="pos-SNT2" style="position:absolute; top:50px; left:170px;" onclick="selectPlayerForPos('SNT2')">SNT</div>  
+        </div>  
+    </div>  
+</div>
+
+<div id="tactics-page" class="page">
+    <div class="header">  
+        <div onclick="showPage('dashboard-page')"><i class="fa-solid fa-arrow-left"></i></div>  
+        <div>TAKTIKLER</div>  
+        <div></div>  
+    </div> 
+    <div class="tactics-grid">
+        <div class="tactic-card">
+            <label>Oyun Stili</label>
+            <select id="tactic-style">
+                <option value="pasli">Paslı Oyun</option>
+                <option value="kanat">Kanatları Kullan</option>
+                <option value="uzun">Uzun Top</option>
+                <option value="kontra">Kontra Atak</option>
+            </select>
+        </div>
+        <div class="tactic-card">
+            <label>Markaj</label>
+            <select id="tactic-marking">
+                <option value="alan">Alan Markajı</option>
+                <option value="adam">Adam Markajı</option>
+            </select>
+        </div>
+        <div class="tactic-card">
+                      <label>Mücadele</label>
+            <select id="tactic-aggression">
+                <option value="dikkatli">Çok Dikkatli</option>
+                <option value="normal" selected>Normal</option>
+                <option value="agresif">Agresif</option>
+                <option value="cok-agresif">Çok Agresif</option>
+            </select>
+        </div>
+        <div class="tactic-card">
+            <label>Baskı (Press)</label>
+            <select id="tactic-press">
+                <option value="düşük">Düşük Baskı</option>
+                <option value="dengeli" selected>Dengeli</option>
+                <option value="yüksek">Yüksek Baskı</option>
+            </select>
+        </div>
+    </div>
+    <button class="btn btn-primary" style="margin-top:20px;" onclick="saveTactics()">AYARLARI KAYDET</button>
+</div>
+
+<div id="player-select-modal" class="modal">
+    <div class="contract-paper" style="max-height:80vh; overflow-y:auto;">
+        <h3 id="select-pos-title">Pozisyon Seç</h3>
+        <div id="available-players-list"></div>
+        <button class="btn btn-danger" onclick="closePlayerModal()">KAPAT</button>
+    </div>
+</div>
+
+<script>  
+    let handTimer;
+    const HAND_DELAY = 1000; 
+
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            const intro = document.getElementById('intro-page');
+            intro.style.opacity = '0';
+            setTimeout(() => {
+                intro.style.display = 'none';
+                showPage('start-screen');
+            }, 1000); 
+        }, 3000); 
+    });
+
+    const TEAMS_DATA = {  
+        "super-lig": [  
+            { name: "Fenerbahçe", value: 274, pCount: 31, color: "yellow" },  
+            { name: "Galatasaray", value: 289, pCount: 27, color: "red" },  
+            { name: "Beşiktaş", value: 154, pCount: 29, color: "black" },  
+            { name: "Trabzonspor", value: 106, pCount: 29, color: "purple" },  
+            { name: "Başakşehir FK", value: 70, pCount: 29, color: "orange" },  
+            { name: "Kayserispor", value: 21, pCount: 28, color: "gold" },  
+            { name: "Samsunspor", value: 51, pCount: 29, color: "red" },  
+            { name: "Göztepe", value: 40, pCount: 25, color: "yellow" },  
+            { name: "Ağrıspor", value: 10, pCount: 41, color: "white" },  
+            { name: "Alanyaspor", value: 26, pCount: 29, color: "orange" }  
+        ],  
+        "la-liga": [  
+            { name: "Real Madrid", value: 1350, pCount: 24, color: "white" },  
+            { name: "Barcelona", value: 1112, pCount: 24, color: "blue" },  
+            { name: "Sevilla", value: 132, pCount: 28, color: "red" },  
+            { name: "Atletico Madrid", value: 598, pCount: 23, color: "red" },  
+            { name: "Villarreal", value: 263, pCount: 26, color: "yellow" },  
+            { name: "Espanyol", value: 107, pCount: 24, color: "blue" },  
+            { name: "Real Sociedad", value: 250, pCount: 26, color: "blue" },  
+            { name: "Real Betis", value: 220, pCount: 26, color: "green" },  
+            { name: "Getafe", value: 68, pCount: 22, color: "blue" },  
+            { name: "Valencia", value: 156, pCount: 23, color: "white" }  
+        ],  
+        "premier-lig": [  
+            { name: "Manchester City", value: 1221, pCount: 27, color: "skyblue" },  
+            { name: "Arsenal", value: 1331, pCount: 25, color: "red" },  
+            { name: "Tottenham", value: 838, pCount: 27, color: "white" },  
+            { name: "Chelsea", value: 1118, pCount: 31, color: "blue" },  
+            { name: "Aston Villa", value: 527, pCount: 24, color: "purple" },  
+            { name: "Liverpool", value: 1004, pCount: 26, color: "red" },  
+            { name: "Man United", value: 720, pCount: 26, color: "red" },  
+            { name: "Everton", value: 402, pCount: 25, color: "blue" },  
+            { name: "Crystal Palace", value: 536, pCount: 29, color: "blue" },  
+            { name: "Brighton", value: 526, pCount: 28, color: "blue" }  
+        ]  
+    };  
+
+    const PLAYER_NAMES = ["Icardi", "Dzeko", "Tadic", "Muslera", "Gedson", "Immobile", "Visca", "Mertens", "Fred", "Ferdi", "Semih", "Barış", "Kerem", "Torreira", "Szymanski", "Livakovic", "Onana", "Rashica", "Muci", "Rafa Silva", "Osimhen", "Davinson", "Nelsson", "Abdulkerim", "Osayi", "Djiku", "Becao", "İrfan", "Yunus", "Batshuayi", "Pepe", "Trezeguet", "Mendy", "Uğurcan", "Piatek", "Davidson", "Januzaj", "Okaka", "Balotelli", "Nani", "Ali", "Veli", "Ahmet", "Mehmet", "Can", "Burak", "Cenk", "Hakan", "Arda", "Kenan", "Salih", "Mert"];  
+    const SURNAMES = ["Yılmaz", "Kaya", "Demir", "Çelik", "Şahin", "Yıldız", "Öztürk", "Aydın", "Özdemir", "Arslan", "Koç", "Kurt", "Tekin", "Yalçın", "Erdoğan", "Aslan", "Polat", "Güler", "Tosun", "Ünder"];  
+
+    let gameState = {  
+        user: null, team: null, league: null, money: 0, players: [], fixture: [], currentMatchIndex: 0, standings: {}, lastMatchTime: 0,
+        tactics: { style: 'pasli', marking: 'alan', aggression: 'normal', press: 'dengeli' },
+        lineup: {} 
+    };  
+
+    let matchInterval = null;  
+    let matchSpeed = 1000; 
+    let isMatchRunning = false;  
+    let currentMatchSecond = 0;  
+    let isSecondHalf = false; 
+    let matchEvents = { goals: [], assists: [], redCards: [] };
+
+    const registeredUsers = JSON.parse(localStorage.getItem('proSoccerUsers')) || [];  
+
+    document.addEventListener('click', function(e) {
+        if(e.target.tagName === 'BUTTON' || e.target.closest('.card') || e.target.classList.contains('menu-btn') || e.target.classList.contains('pitch-slot') || e.target.classList.contains('start-menu-btn')) {
+            playSound('sound-click');
+        }
+        if(document.getElementById('start-screen').classList.contains('active')) {
+            resetHandTimer();
+        }
+    });
+
+    function toggleHamburger() {
+        const m = document.getElementById('hamburger-menu');
+        m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    function showPage(pageId) {  
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));  
+        const targetPage = document.getElementById(pageId);
+        if(targetPage) targetPage.classList.add('active');
+        
+        if(pageId === 'start-screen') {
+            resetHandTimer();
+        } else {
+            document.getElementById('hamburger-menu').style.display = 'none';
+            stopHandAnim();
+        }
+    }  
+
+    // EL ANİMASYONU FIX - GÜNCELLENDİ
+    function resetHandTimer() {
+        stopHandAnim();
+        handTimer = setTimeout(startHandAnim, HAND_DELAY);
+    }
+
+    function startHandAnim() {
+        const hand = document.getElementById('tutorial-hand');
+        const btn = document.getElementById('main-start-btn');
+        if(!hand || !btn || !document.getElementById('start-screen').classList.contains('active')) return;
+
+        const rect = btn.getBoundingClientRect();
+        hand.style.left = (rect.left + rect.width / 2) + 'px';
+        hand.style.top = (rect.top + rect.height / 2) + 'px';
+        
+        hand.style.display = 'block';
+        hand.classList.add('hand-animating');
+    }
+
+    function stopHandAnim() {
+        clearTimeout(handTimer);
+        const hand = document.getElementById('tutorial-hand');
+        if(hand) {
+            hand.style.display = 'none';
+            hand.classList.remove('hand-animating');
+        }
+    }
+
+    function startBtnClicked() {
+        stopHandAnim();
+        showPage('league-select-page');
+    }
+
+    function toast(msg) {  
+        const t = document.getElementById('toast');  
+        t.innerText = msg;  
+        t.style.display = 'block';  
+        setTimeout(() => t.style.display = 'none', 3000);  
+    }  
+
+    function playSound(id) {
+        const s = document.getElementById(id);
+        if(s) { s.currentTime = 0; s.play().catch(e => {}); }
+    }
+
+    function saveGame() {
+        const key = gameState.user ? 'proSoccerSave_' + gameState.user.u : 'proSoccerSave_Guest';
+        localStorage.setItem(key, JSON.stringify(gameState));
+    }
+
+    function loadGame(username) {
+        const key = username ? 'proSoccerSave_' + username : 'proSoccerSave_Guest';
+        const savedData = localStorage.getItem(key);
+        if(savedData) { gameState = JSON.parse(savedData); return true; }
+        return false;
+    }
+
+    function handleRegister() {  
+        const u = document.getElementById('reg-username').value;  
+        const e = document.getElementById('reg-email').value;  
+        const p = document.getElementById('reg-password').value;  
+        if (u.length < 8 || !/\d/.test(u)) return toast("Kullanıcı adı 8 hane ve sayı içermeli!");  
+        if (!e.includes("@gmail.com")) return toast("Gmail @gmail.com içermeli!");  
+        if (p.length < 8 || !/\d/.test(p)) return toast("Şifre 8 hane ve sayı içermeli!");  
+        registeredUsers.push({ u, e, p });  
+        localStorage.setItem('proSoccerUsers', JSON.stringify(registeredUsers));  
+        toast("Kayıt Başarılı! Giriş yapınız.");  
+        showPage('login-page');  
+    }  
+
+    function handleLogin() {  
+        const u = document.getElementById('login-username').value;  
+        const p = document.getElementById('login-password').value;  
+        const user = registeredUsers.find(acc => acc.u === u && acc.p === p);  
+        if (user) { 
+            if(loadGame(u)) {
+                toast("Kayıtlı oyun yüklendi!");
+                showPage('dashboard-page');
+                updateDashboard();
+                updatePitchUI(); 
+            } else {
+                gameState.user = user; 
+                toast("Giriş Başarılı!"); 
+                showPage('league-select-page'); 
+            }
+        } 
+        else { toast("Hatalı kullanıcı adı veya şifre!"); }  
+    }  
+
+    let resetUser = null;  
+    function handleForgotCheck() {  
+        const u = document.getElementById('forgot-username').value;  
+        const e = document.getElementById('forgot-email').value;  
+        resetUser = registeredUsers.find(acc => acc.u === u && acc.e === e);  
+        if (resetUser) { showPage('reset-password-page'); } else { toast("Bilgiler uyuşmuyor!"); }  
+    }  
+
+    function handleResetPassword() {  
+        const p1 = document.getElementById('new-pass-1').value;  
+        const p2 = document.getElementById('new-pass-2').value;  
+        if (p1 !== p2) return toast("Şifreler uyuşmuyor!");  
+        resetUser.p = p1;  
+        localStorage.setItem('proSoccerUsers', JSON.stringify(registeredUsers));  
+        toast("Şifre Yenilendi!");  
+        showPage('login-page');  
+    }  
+
+    function selectLeague(leagueKey) {  
+        gameState.league = leagueKey;  
+        const container = document.getElementById('team-list');  
+        container.innerHTML = "";  
+        TEAMS_DATA[leagueKey].forEach(team => {  
+            const div = document.createElement('div');  
+            div.className = 'card';  
+            div.innerHTML = `<div style="width:50px; height:50px; background:${team.color}; border-radius:50%; margin:0 auto 10px auto;"></div><h3>${team.name}</h3><p>Değer: ${team.value}M</p>`;  
+            div.onclick = () => openContract(team);  
+            container.appendChild(div);  
+        });  
+        showPage('team-select-page');  
+    }  
+
+    let selectedTeamTemp = null;  
+    function openContract(team) {  
+        selectedTeamTemp = team;  
+        document.getElementById('contract-team-name').innerText = team.name;  
+        document.getElementById('contract-team-value').innerText = team.value + "M";  
+        document.getElementById('contract-player-count').innerText = team.pCount;  
+        document.getElementById('contract-user-name').innerText = gameState.user ? gameState.user.u : "Misafir";  
+        document.getElementById('contract-modal').style.display = 'flex';  
+    }  
+
+    function closeModal() { document.getElementById('contract-modal').style.display = 'none'; }  
+
+    function signContract() {  
+        gameState.team = selectedTeamTemp;  
+        gameState.money = (gameState.team.value > 600) ? 50 : 25;  
+        generateMyPlayers();  
+        createFixture();  
+        closeModal();  
+        saveGame(); 
+        updateDashboard();  
+        showPage('dashboard-page');  
+    }  
+
+    function generateMyPlayers() {  
+        gameState.players = [];  
+        const positions = ["KL", "SLB", "STP", "STP", "SĞB", "OS", "OS", "SLK", "SNT", "SNT", "SĞK"];  
+        for(let i=0; i<gameState.team.pCount; i++) {  
+            let ovr = randomInt(60, 85); 
+            let val = randomInt(5, 50);  
+            let pos = positions[i % 11];  
+            gameState.players.push({ id: i, name: PLAYER_NAMES[randomInt(0, PLAYER_NAMES.length-1)] + " " + SURNAMES[randomInt(0, SURNAMES.length-1)], pos: pos, ovr: ovr, value: val, goals: 0, assists: 0 });  
+        }  
+    }  
+
+    function createFixture() {  
+        const leagueTeams = TEAMS_DATA[gameState.league];  
+        gameState.fixture = [];  
+        leagueTeams.forEach(t => { if(t.name !== gameState.team.name) gameState.fixture.push({ opponent: t, home: true }); });  
+        leagueTeams.forEach(t => { gameState.standings[t.name] = { p:0, w:0, d:0, l:0, gf:0, ga:0, av:0 }; });  
+    }  
+
+    function updateDashboard() {  
+        document.getElementById('user-money').innerText = gameState.money.toFixed(1);  
+        if(gameState.currentMatchIndex < gameState.fixture.length) {  
+            const match = gameState.fixture[gameState.currentMatchIndex];  
+            document.getElementById('home-name').innerText = match.home ? gameState.team.name : match.opponent.name;  
+            document.getElementById('away-name').innerText = !match.home ? gameState.team.name : match.opponent.name;  
+        }  
+        renderMiniStandings();  
+    }  
+
+    function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }  
+
+    function toggleSpeed() {  
+        if(matchSpeed === 1000) { matchSpeed = 500; document.getElementById('speed-btn').innerText = "HIZ: 2X"; } 
+        else if(matchSpeed === 500) { matchSpeed = 250; document.getElementById('speed-btn').innerText = "HIZ: 4X"; }
+        else { matchSpeed = 1000; document.getElementById('speed-btn').innerText = "HIZ: 1X"; }  
+        if(isMatchRunning) { clearInterval(matchInterval); runMatchLoop(); }  
+    }  
+
+    function goToMatchScreen() {  
+        gameState.lastMatchTime = Date.now();  
+        showPage('match-screen-page');  
+        const match = gameState.fixture[gameState.currentMatchIndex];  
+        document.getElementById('m-home-name').innerText = match.home ? gameState.team.name : match.opponent.name;  
+        document.getElementById('m-away-name').innerText = !match.home ? gameState.team.name : match.opponent.name;  
+        document.getElementById('score-home').innerText = "0";  
+        document.getElementById('score-away').innerText = "0";  
+        document.getElementById('commentary-feed').innerHTML = "";  
+        document.getElementById('start-simulation-btn').style.display = 'inline-block';  
+        document.getElementById('half-time-controls').style.display = 'none';
+        document.getElementById('end-match-btn').style.display = 'none';  
+        document.getElementById('match-stats-btn').style.display = 'none';  
+        document.getElementById('match-stats-panel').style.display = 'none';  
+        addCommentary("man", `Ertem Şener: Merhabalar! Müthiş bir maç bizi bekliyor.`);  
+    }  
+
+    function startMatchSimulation() {  
+        document.getElementById('start-simulation-btn').style.display = 'none';  
+        currentMatchSecond = 0; homeScore = 0; awayScore = 0;  
+        matchEvents = { goals: [], assists: [], redCards: [] };
+        isMatchRunning = true;  
+        isSecondHalf = false;  
+        playSound('sound-whistle');
+        runMatchLoop();  
+    }  
+
+    function resumeMatchSimulation() {
+        document.getElementById('half-time-controls').style.display = 'none';
+        isMatchRunning = true;
+        isSecondHalf = true;
+        playSound('sound-whistle');
+        runMatchLoop();
+    }
+
+    function runMatchLoop() {  
+        const match = gameState.fixture[gameState.currentMatchIndex];  
+        const myWinProb = (gameState.team.value / (gameState.team.value + match.opponent.value)) * 100;  
+
+        matchInterval = setInterval(() => {  
+            currentMatchSecond++;  
+            document.getElementById('match-timer').innerText = (currentMatchSecond < 10 ? "0"+currentMatchSecond : currentMatchSecond) + ":00";  
+              
+            if(currentMatchSecond === 45 && !isSecondHalf) {  
+                clearInterval(matchInterval);
+                isMatchRunning = false;
+                document.getElementById('half-time-controls').style.display = 'block';
+                playSound('sound-whistle'); 
+                addCommentary("man", "Ertem: İlk yarı bitti!");
+                return;
+            }  
+              
+            if(Math.random() < 0.06) {  
+                if(Math.random() * 100 < myWinProb) {  
+                    if(match.home) homeScore++; else awayScore++;  
+                    playSound('sound-goal');
+                    const scorer = gameState.players[randomInt(0, 10)];
+                    const asister = gameState.players[randomInt(0, 10)];
+                    matchEvents.goals.push(scorer.name);
+                    matchEvents.assists.push(asister.name);
+                    addCommentary("man", `GOOOOOL! ${scorer.name} attı!`);  
+                } else {  
+                    if(match.home) awayScore++; else homeScore++;  
+                    playSound('sound-goal'); 
+                    addCommentary("man", "Eyvah! Rakip golü buldu...");  
+                }  
+                updateScore(homeScore, awayScore);  
+            }
+
+            if(currentMatchSecond >= 90) {  
+                clearInterval(matchInterval);  
+                isMatchRunning = false;  
+                playSound('sound-whistle');
+                finishMatch(homeScore, awayScore);  
+                document.getElementById('end-match-btn').style.display = 'inline-block';  
+                document.getElementById('match-stats-btn').style.display = 'inline-block';  
+            }  
+        }, matchSpeed);  
+    }  
+
+    let homeScore = 0; let awayScore = 0;  
+    function updateScore(h, a) { document.getElementById('score-home').innerText = h; document.getElementById('score-away').innerText = a; }  
+
+    function addCommentary(person, text) {  
+        const box = document.getElementById('commentary-feed');  
+        const div = document.createElement('div');  
+        div.className = 'commentator';  
+        div.innerHTML = `<div class="comm-avatar ${person}"></div><span>${text}</span>`;  
+        box.prepend(div);  
+    }  
+
+    function finishMatch(h, a) {  
+        const match = gameState.fixture[gameState.currentMatchIndex];  
+        const myScore = match.home ? h : a;  
+        const oppScore = match.home ? a : h;  
+        if(myScore > oppScore) gameState.money += 1.5;  
+        updateStandings(gameState.team.name, myScore, oppScore);  
+        updateStandings(match.opponent.name, oppScore, myScore);  
+        gameState.currentMatchIndex++;  
+        
+        document.getElementById('stats-goals').innerText = `Goller: ${matchEvents.goals.join(", ") || 'Yok'}`;
+        document.getElementById('stats-assists').innerText = `Asistler: ${matchEvents.assists.join(", ") || 'Yok'}`;
+        document.getElementById('stats-cards').innerText = `Kırmızı Kartlar: ${matchEvents.redCards.join(", ") || 'Yok'}`;
+        
+        saveGame(); 
+    }  
+
+    function showMatchStats() {  
+        const panel = document.getElementById('match-stats-panel');  
+        panel.style.display = panel.style.display === 'none' ? 'block' : 'none';  
+    }  
+
+    function updateStandings(teamName, gf, ga) {  
+        const s = gameState.standings[teamName];  
+        s.gf += gf; s.ga += ga; s.av += (gf - ga);  
+        if(gf > ga) { s.p += 3; s.w++; } else if(gf === ga) { s.p += 1; s.d++; } else { s.l++; }  
+    }  
+
+    function endMatch() { showPage('dashboard-page'); updateDashboard(); }  
+
+    let activeSlot = null;
+    function showFormation() { 
+        showPage('formation-page'); 
+        updatePitchUI();
+    }
+
+    function updatePitchUI() {
+        for(let pos in gameState.lineup) {
+            const slot = document.getElementById(`pos-${pos}`);
+            if(slot && gameState.lineup[pos]) {
+                slot.innerText = gameState.lineup[pos].name.split(" ")[0];
+                slot.classList.add('occupied');
+            }
+        }
+    }
+
+    function selectPlayerForPos(posId) {
+        activeSlot = posId;
+        const modal = document.getElementById('player-select-modal');
+        const list = document.getElementById('available-players-list');
+        list.innerHTML = "";
+        
+        gameState.players.forEach(p => {
+            const div = document.createElement('div');
+            div.className = "player-list-item";
+            div.innerHTML = `<span>${p.name} (${p.ovr})</span> <button class="btn btn-primary" style="width:auto;" onclick="assignPlayerToPos(${p.id})">Seç</button>`;
+            list.appendChild(div);
+        });
+        modal.style.display = 'flex';
+    }
+
+    function assignPlayerToPos(playerId) {
+        const player = gameState.players.find(p => p.id === playerId);
+        gameState.lineup[activeSlot] = player;
+        closePlayerModal();
+        updatePitchUI();
+        saveGame(); 
+    }
+
+    function closePlayerModal() { document.getElementById('player-select-modal').style.display = 'none'; }
+
+    function showTactics() { showPage('tactics-page'); }
+    function saveTactics() {
+        gameState.tactics.style = document.getElementById('tactic-style').value;
+        gameState.tactics.marking = document.getElementById('tactic-marking').value;
+        gameState.tactics.aggression = document.getElementById('tactic-aggression').value;
+        gameState.tactics.press = document.getElementById('tactic-press').value;
+        saveGame(); 
+        toast("Taktikler kaydedildi!");
+        showPage('dashboard-page');
+    }
+
+    function showSquad() {  
+        showPage('squad-page');  
+        const container = document.getElementById('my-players-list');  
+        container.innerHTML = "";  
+        
+        let totalVal = 0;
+        gameState.players.forEach(p => { totalVal += p.value; });
+        document.getElementById('squad-total-value').innerText = totalVal + "M";
+
+        gameState.players.forEach(p => {  
+            const div = document.createElement('div');  
+            div.className = 'player-list-item';  
+            div.innerHTML = `<div style="display:flex; align-items:center; gap:10px;"><div class="overall-badge">${p.ovr}</div><div><b>${p.name}</b></div></div><button class="btn btn-secondary" style="width:auto;" onclick="sellPlayer(${p.id}, ${p.value})">SAT</button>`;  
+            container.appendChild(div);  
+        });  
+    }  
+
+    function sellPlayer(id, val) {
+        gameState.players = gameState.players.filter(p => p.id !== id);
+        gameState.money += val;
+        saveGame(); 
+        showSquad();
+        updateDashboard();
+    }
+
+    function showTransferList() {
+        showPage('transfer-page');
+        document.getElementById('transfer-money').innerText = gameState.money.toFixed(1);
+        const container = document.getElementById('transfer-list-container');
+        container.innerHTML = "";
+        for(let i=0; i<4; i++) {
+            const name = PLAYER_NAMES[randomInt(0, PLAYER_NAMES.length-1)];
+            const val = randomInt(10, 60);
+            const div = document.createElement('div');
+            div.className = "player-list-item";
+            div.innerHTML = `<span>${name} (${val}M)</span> <button class="btn btn-primary" style="width:auto;" onclick="buyPlayer('${name}', ${val})">AL</button>`;
+            container.appendChild(div);
+        }
+    }
+
+    function buyPlayer(name, price) {
+        if(gameState.money >= price) {
+            gameState.money -= price;
+            gameState.players.push({ id: Date.now(), name: name + " " + SURNAMES[randomInt(0, 19)], pos: "OS", ovr: randomInt(75, 85), value: price });
+            saveGame(); 
+            toast("Transfer başarılı!");
+            showTransferList();
+        } else toast("Para yetersiz!");
+    }
+
+    function showStandings() {  
+        showPage('standings-page');  
+        const tbody = document.getElementById('standings-body');  
+        tbody.innerHTML = "";  
+        const sorted = Object.keys(gameState.standings).sort((a,b) => gameState.standings[b].p - gameState.standings[a].p);  
+        sorted.forEach((name, i) => {  
+            const t = gameState.standings[name];  
+            tbody.innerHTML += `<tr><td>${i+1}</td><td>${name}</td><td>${t.w+t.d+t.l}</td><td><b>${t.p}</b></td><td>${t.av}</td></tr>`;  
+        });  
+    }  
+
+    function renderMiniStandings() {
+        const div = document.getElementById('mini-standings');
+        if(!div) return;
+        div.innerHTML = "";
+        const sorted = Object.keys(gameState.standings).sort((a,b) => gameState.standings[b].p - gameState.standings[a].p).slice(0,5);
+        sorted.forEach((n, i) => { div.innerHTML += `<div style="font-size:12px; border-bottom:1px solid #333;">${i+1}. ${n} - ${gameState.standings[n].p}p</div>`; });
+    }
+
+    function randomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }  
+    function logout() { location.reload(); }
+
+</script>  
+</body>  
+</html>
