@@ -23,7 +23,8 @@
         color: var(--light);  
         height: 100vh;  
         overflow: hidden;  
-        background-image: url('https://images.unsplash.com/photo-1518091043644-c1d4457512c6?q=80&w=2000&auto=format&fit=crop');   
+        /* TELİFSİZ FUTBOL GÖRSELİ GÜNCELLENDİ */
+        background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000&auto=format&fit=crop');   
         background-size: cover;  
         background-position: center;  
         background-attachment: fixed;  
@@ -113,7 +114,8 @@
     
     /* --- SOCCER STAR BAŞLAMA EKRANI --- */
     #start-screen {
-        background: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=2000&auto=format&fit=crop') no-repeat center center !important;
+        /* TELİFSİZ FUTBOL STADYUM GÖRSELİ GÜNCELLENDİ */
+        background: url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=2000&auto=format&fit=crop') no-repeat center center !important;
         background-size: cover !important;
         backdrop-filter: none !important;
         padding: 0;
@@ -207,7 +209,38 @@
         position: relative;
     }
 
-    /* EL ANİMASYONU FIX - GÜNCELLENDİ */
+    /* Hakkımızda Sayfası Tasarımı */
+    .about-content {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: rgba(0,0,0,0.7);
+        border-radius: 15px;
+        line-height: 1.6;
+        text-align: justify;
+    }
+    .about-social-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+    }
+    .social-btn {
+        padding: 15px 30px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: 0.3s;
+    }
+    .instagram-btn { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .youtube-btn { background: #ff0000; }
+    .social-btn:hover { transform: translateY(-5px); opacity: 0.9; }
+
+    /* EL ANİMASYONU */
     .tutorial-hand {
         position: absolute;
         width: 50px;
@@ -398,6 +431,104 @@
     }
     .pitch-slot.occupied { background: var(--primary); border-style: solid; color: black; font-weight: bold; }
 
+    /* Pozisyon Kategori Başlığı */
+    .pos-header {
+        background: var(--primary);
+        color: black;
+        padding: 5px;
+        font-weight: bold;
+        margin: 10px 0 5px 0;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    /* --- YENİ EKLENEN STİLLER --- */
+    .league-finish-screen {
+        background: url('https://images.unsplash.com/photo-1518091043644-c1d445eb9634?q=80&w=2000&auto=format&fit=crop') no-repeat center bottom !important;
+        background-size: cover !important;
+        text-align: center;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+    .cup-display {
+        width: 200px;
+        margin: 20px 0;
+        filter: drop-shadow(0 0 20px gold);
+    }
+    .cup-title { font-size: 32px; font-weight: 900; color: var(--gold); text-shadow: 2px 2px 10px black; }
+    .reward-text { font-size: 24px; margin: 10px 0; background: rgba(0,0,0,0.7); padding: 10px 20px; border-radius: 10px; border: 2px solid var(--gold); }
+    
+    .cl-theme { background: radial-gradient(circle, #1a2a6c, #b21f1f, #fdbb2d); }
+    .el-theme { background: linear-gradient(135deg, #ff8008, #ffc837); }
+    .conf-theme { background: linear-gradient(135deg, #00b09b, #96c93d); }
+    .eliminated-theme { background: radial-gradient(circle, #8e0e00, #1f1c18) !important; }
+
+    .draw-anim-container {
+        width: 100%;
+        max-width: 400px;
+        background: rgba(0,0,0,0.8);
+        border-radius: 20px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    .ball-container { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
+    .draw-ball { width: 40px; height: 40px; background: white; border-radius: 50%; color: black; display: flex; align-items: center; justify-content: center; font-weight: bold; animation: bounce 0.5s infinite alternate; }
+    @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+
+    /* YENİ AYARLAR BUTONU VE SAYFASI */
+    .settings-btn-main {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        background: rgba(0,0,0,0.6);
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 1000;
+        border: 2px solid white;
+    }
+    .settings-row {
+        margin: 25px 0;
+        text-align: left;
+    }
+    .settings-row label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: var(--primary);
+    }
+    .lang-btns {
+        display: flex;
+        gap: 10px;
+    }
+    .lang-opt {
+        flex: 1;
+        padding: 15px;
+        background: #333;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+        border: 2px solid transparent;
+    }
+    .lang-opt.selected {
+        border-color: var(--primary);
+        background: #444;
+    }
+    input[type=range] {
+        width: 100%;
+        height: 10px;
+        accent-color: var(--primary);
+    }
+
 </style>
 
 </head>  
@@ -418,9 +549,9 @@
         <div class="start-menu-btn" onclick="toggleHamburger()">
             <i class="fa-solid fa-bars"></i>
             <div id="hamburger-menu" class="hamburger-dropdown">
-                <div onclick="showPage('login-page')">Giriş Yap</div>
-                <div onclick="showPage('register-page')">Kayıt Ol</div>
-                <div onclick="showPage('forgot-password-page')">Şifremi Unuttum</div>
+                <div onclick="showPage('login-page')" data-lang="login">Giriş Yap</div>
+                <div onclick="showPage('register-page')" data-lang="register">Kayıt Ol</div>
+                <div onclick="showPage('about-page')" data-lang="about">Hakkımızda</div>
             </div>
         </div>
     </div>
@@ -433,88 +564,138 @@
 
     <div class="bottom-start-container">
         <div id="tutorial-hand" class="tutorial-hand"></div>
-        <button id="main-start-btn" class="btn-big-start" onclick="startBtnClicked()">BAŞLA</button>
+        <button id="main-start-btn" class="btn-big-start" onclick="startBtnClicked()" data-lang="start_btn">BAŞLA</button>
+    </div>
+
+    <div class="settings-btn-main" onclick="showPage('settings-page')">
+        <i class="fa-solid fa-gear"></i>
     </div>
 </div>
 
 <div id="toast" class="toast">Bildirim</div>  
 
+<audio id="game-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" loop></audio>
 <audio id="sound-goal" src="https://www.myinstants.com/media/sounds/goal-sound-effect.mp3"></audio>
 <audio id="sound-whistle" src="https://www.myinstants.com/media/sounds/referee-whistle.mp3"></audio>
-<audio id="sound-click" src="https://www.myinstants.com/media/sounds/button-press.mp3"></audio>
+<audio id="sound-click" src="https://cdn.pixabay.com/audio/2022/03/10/audio_c8c8a73056.mp3"></audio> <div id="settings-page" class="page" style="justify-content: center; align-items: center;">
+    <div class="form-container" style="max-width: 500px; width: 90%;">
+        <h2 data-lang="settings_title">AYARLAR</h2>
+        
+        <div class="settings-row">
+            <label data-lang="select_lang">Dil Seç / Select Language</label>
+            <div class="lang-btns">
+                <div class="lang-opt" id="lang-tr" onclick="setLanguage('tr')">🇹🇷 Türkçe</div>
+                <div class="lang-opt" id="lang-en" onclick="setLanguage('en')">🇺🇸 English</div>
+            </div>
+        </div>
+
+        <div class="settings-row">
+            <label><i class="fa-solid fa-music"></i> <span data-lang="music_vol">Müzik</span> (<span id="music-val">100</span>%)</label>
+            <input type="range" min="0" max="100" value="100" id="music-slider" oninput="updateVolume('music')">
+        </div>
+
+        <div class="settings-row">
+            <label><i class="fa-solid fa-volume-high"></i> <span data-lang="sfx_vol">Ses Efektleri</span> (<span id="sfx-val">100</span>%)</label>
+            <input type="range" min="0" max="100" value="100" id="sfx-slider" oninput="updateVolume('sfx')">
+        </div>
+
+        <button class="btn btn-primary" onclick="showPage('start-screen')" data-lang="save_back">KAYDET / GERİ DÖN</button>
+    </div>
+</div>
 
 <div id="login-page" class="page" style="justify-content: center;">  
     <div class="form-container">  
         <h1 style="margin-bottom:20px; color:var(--primary);">ProSoccer <i class="fa-solid fa-futbol"></i></h1>  
-        <h2>GİRİŞ YAP</h2>  
-        <input type="text" id="login-username" placeholder="Kullanıcı Adı">  
-        <input type="password" id="login-password" placeholder="Şifre">  
-        <button class="btn btn-primary" onclick="handleLogin()">GİRİŞ YAP</button>  
-        <span class="link-text" onclick="showPage('register-page')">Kayıt olmadın mı?</span>  
-        <span class="link-text" onclick="showPage('start-screen')">Geri Dön</span>  
+        <h2 data-lang="login_title">GİRİŞ YAP</h2>  
+        <input type="text" id="login-username" placeholder="Kullanıcı Adı" data-placeholder="username_ph">  
+        <input type="password" id="login-password" placeholder="Şifre" data-placeholder="password_ph">  
+        <button class="btn btn-primary" onclick="handleLogin()" data-lang="login_btn">GİRİŞ YAP</button>  
+        <span class="link-text" onclick="showPage('register-page')" data-lang="not_reg">Kayıt olmadın mı?</span>  
+        <span class="link-text" onclick="showPage('forgot-password-page')" data-lang="forgot_pass">Şifremi Unuttum</span>  
+        <span class="link-text" onclick="showPage('start-screen')" data-lang="back_btn">Geri Dön</span>  
     </div>  
 </div>  
 
 <div id="register-page" class="page" style="justify-content: center;">  
     <div class="form-container">  
-        <h2>KAYIT OL</h2>  
-        <input type="text" id="reg-username" placeholder="Kullanıcı Adı (min 8 haneli, sayı içermeli)">  
-        <input type="email" id="reg-email" placeholder="Gmail (@gmail.com)">  
-        <input type="password" id="reg-password" placeholder="Şifre (min 8 haneli, sayı içermeli)">  
-        <button class="btn btn-secondary" onclick="handleRegister()">KAYIT OL</button>  
-        <span class="link-text" onclick="showPage('forgot-password-page')">Şifremi Unuttum</span>  
-        <span class="link-text" onclick="showPage('login-page')">Giriş'e Dön</span>  
+        <h2 data-lang="register_title">KAYIT OL</h2>  
+        <input type="text" id="reg-username" placeholder="Kullanıcı Adı (min 8 haneli, sayı içermeli)" data-placeholder="reg_u_ph">  
+        <input type="email" id="reg-email" placeholder="Gmail (@gmail.com)" data-placeholder="reg_e_ph">  
+        <input type="password" id="reg-password" placeholder="Şifre (min 8 haneli, sayı içermeli)" data-placeholder="reg_p_ph">  
+        <button class="btn btn-secondary" onclick="handleRegister()" data-lang="register_btn">KAYIT OL</button>  
+        <span class="link-text" onclick="showPage('forgot-password-page')" data-lang="forgot_pass">Şifremi Unuttum</span>  
+        <span class="link-text" onclick="showPage('login-page')" data-lang="back_login">Giriş'e Dön</span>  
     </div>  
 </div>  
 
 <div id="forgot-password-page" class="page" style="justify-content: center;">  
     <div class="form-container">  
-        <h2>ŞİFREMİ UNUTTUM</h2>  
-        <p style="font-size:12px; color:#aaa; margin-bottom:10px;">Kayıtlı bilgilerinizi giriniz.</p>  
-        <input type="text" id="forgot-username" placeholder="Kullanıcı Adı">  
-        <input type="email" id="forgot-email" placeholder="Gmail">  
-        <button class="btn btn-danger" onclick="handleForgotCheck()">Sorgula</button>  
-        <span class="link-text" onclick="showPage('login-page')">Geri</span>  
+        <h2 data-lang="forgot_title">ŞİFREMİ UNUTTUM</h2>  
+        <p style="font-size:12px; color:#aaa; margin-bottom:10px;" data-lang="forgot_info">Kayıtlı bilgilerinizi giriniz.</p>  
+        <input type="text" id="forgot-username" placeholder="Kullanıcı Adı" data-placeholder="username_ph">  
+        <input type="email" id="forgot-email" placeholder="Gmail" data-placeholder="reg_e_ph">  
+        <button class="btn btn-danger" onclick="handleForgotCheck()" data-lang="check_btn">Sorgula</button>  
+        <span class="link-text" onclick="showPage('login-page')" data-lang="back_btn">Geri</span>  
     </div>  
 </div>  
 
 <div id="reset-password-page" class="page" style="justify-content: center;">  
     <div class="form-container">  
-        <h2>ŞİFRE SIFIRLAMA</h2>  
-        <input type="password" id="new-pass-1" placeholder="Yeni Şifre (8 hane + sayı)">  
-        <input type="password" id="new-pass-2" placeholder="Yeni Şifre (Tekrar)">  
-        <button class="btn btn-primary" onclick="handleResetPassword()">Şifreyi Yenile</button>  
+        <h2 data-lang="reset_title">ŞİFRE SIFIRLAMA</h2>  
+        <input type="password" id="new-pass-1" placeholder="Yeni Şifre (8 hane + sayı)" data-placeholder="reg_p_ph">  
+        <input type="password" id="new-pass-2" placeholder="Yeni Şifre (Tekrar)" data-placeholder="new_p2_ph">  
+        <button class="btn btn-primary" onclick="handleResetPassword()" data-lang="reset_btn">Şifreyi Yenile</button>  
     </div>  
 </div>  
 
+<div id="about-page" class="page">
+    <div class="header">
+        <div onclick="showPage('start-screen')"><i class="fa-solid fa-arrow-left"></i> <span data-lang="back_btn">Geri</span></div>
+        <h2 style="text-align:center; flex:1;" data-lang="about_title">Hakkımızda</h2>  
+    </div>
+    <div class="about-content">
+        <div id="about-text-container">
+            </div>
+        
+        <div class="about-social-buttons">
+            <a href="https://www.instagram.com/prosoccer2026?igsh=dml6bmF6dW12dDU0" target="_blank" class="social-btn instagram-btn">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://youtube.com/@zenixeditsyt?si=FwgOFtS7PYQL3EC-" target="_blank" class="social-btn youtube-btn">
+                <i class="fa-brands fa-youtube"></i> Youtube
+            </a>
+        </div>
+    </div>
+</div>
+
 <div id="league-select-page" class="page">  
     <div class="header">
-        <div onclick="showPage('start-screen')"><i class="fa-solid fa-arrow-left"></i> Geri</div>
-        <h2 style="text-align:center; flex:1;">Lig Seç</h2>  
+        <div onclick="showPage('start-screen')"><i class="fa-solid fa-arrow-left"></i> <span data-lang="back_btn">Geri</span></div>
+        <h2 style="text-align:center; flex:1;" data-lang="select_league">Lig Seç</h2>  
     </div>
     <div class="card-grid">  
         <div class="card" onclick="selectLeague('super-lig')">  
             <i class="fa-solid fa-flag" style="font-size:30px; color:#e74c3c;"></i>  
-            <h3>Süper Lig</h3>  
-            <p>Türkiye</p>  
+            <h3 data-lang="super_lig">Süper Lig</h3>  
+            <p data-lang="turkey">Türkiye</p>  
         </div>  
         <div class="card" onclick="selectLeague('premier-lig')">  
             <i class="fa-solid fa-crown" style="font-size:30px; color:#9b59b6;"></i>  
-            <h3>Premier Lig</h3>  
-            <p>İngiltere</p>  
+            <h3 data-lang="premier_lig">Premier Lig</h3>  
+            <p data-lang="england">İngiltere</p>  
         </div>  
         <div class="card" onclick="selectLeague('la-liga')">  
             <i class="fa-solid fa-sun" style="font-size:30px; color:#f1c40f;"></i>  
-            <h3>La Liga</h3>  
-            <p>İspanya</p>  
+            <h3 data-lang="la_liga">La Liga</h3>  
+            <p data-lang="spain">İspanya</p>  
         </div>  
     </div>  
 </div>  
 
 <div id="team-select-page" class="page">  
     <div class="header">
-        <div onclick="showPage('league-select-page')"><i class="fa-solid fa-arrow-left"></i> Liglere Dön</div>
-        <h2 style="text-align:center; flex:1;">Takım Seç</h2>  
+        <div onclick="showPage('league-select-page')"><i class="fa-solid fa-arrow-left"></i> <span data-lang="back_to_leagues">Liglere Dön</span></div>
+        <h2 style="text-align:center; flex:1;" data-lang="select_team">Takım Seç</h2>  
     </div>
     <div id="team-list" class="card-grid">  
         </div>  
@@ -522,21 +703,29 @@
 
 <div id="contract-modal" class="modal">  
     <div class="contract-paper">  
-        <h2>RESMİ SÖZLEŞME</h2>  
-        <p><strong>Takım:</strong> <span id="contract-team-name"></span></p>  
-        <p><strong>Değer:</strong> <span id="contract-team-value"></span></p>  
-        <p><strong>Oyuncu Sayısı:</strong> <span id="contract-player-count"></span></p>  
-        <p style="margin-top:20px; font-size:12px;">  
+        <h2 data-lang="contract_title">RESMİ SÖZLEŞME</h2>  
+        <p><strong data-lang="team">Takım:</strong> <span id="contract-team-name"></span></p>  
+        <p><strong data-lang="value">Değer:</strong> <span id="contract-team-value"></span></p>  
+        <p><strong data-lang="player_count">Oyuncu Sayısı:</strong> <span id="contract-player-count"></span></p>  
+        <p style="margin-top:20px; font-size:12px;" data-lang="contract_info">  
             Bu sözleşmeyi imzalayarak kulübün tüm sorumluluğunu almayı,   
             maçlara çıkmayı ve finansal yönetimi üstlenmeyi kabul ediyorsunuz.  
         </p>  
         <div class="contract-sign-area">  
-            <p>Kullanıcı: <span id="contract-user-name">Misafir</span></p>  
-            <button class="btn btn-primary" onclick="signContract()">İMZALA VE BAŞLA</button>  
-            <button class="btn btn-danger" style="margin-top:5px;" onclick="closeModal()">İPTAL</button>  
+            <p><span data-lang="user">Kullanıcı:</span> <span id="contract-user-name">Misafir</span></p>  
+            <button class="btn btn-primary" onclick="signContract()" data-lang="sign_btn">İMZALA VE BAŞLA</button>  
+            <button class="btn btn-danger" style="margin-top:5px;" onclick="closeModal()" data-lang="cancel_btn">İPTAL</button>  
         </div>  
     </div>  
 </div>  
+
+<div id="logout-confirm-modal" class="modal">
+    <div class="form-container" style="background: white; color: black;">
+        <h3 id="logout-message" style="margin-bottom: 20px;" data-lang="logout_msg">Çıkış yapmak üzeresiniz.</h3>
+        <button id="logout-primary-btn" class="btn btn-danger" onclick="confirmLogout('proceed')" data-lang="yes">Evet</button>
+        <button class="btn btn-secondary" onclick="confirmLogout('cancel')" data-lang="back_btn">Geri Dön</button>
+    </div>
+</div>
 
 <div id="dashboard-page" class="page">  
     <div class="header">  
@@ -546,25 +735,25 @@
     </div>  
 
     <div class="match-card">  
-        <h3 style="color:#aaa; font-size:14px;">SIRADAKİ MAÇ</h3>  
+        <h3 style="color:#aaa; font-size:14px;"><span data-lang="match">MAÇ</span> <span id="match-count-display">1</span> / 20</h3>  
         <div class="versus">  
             <div style="text-align:center;">  
-                <div class="team-logo-lg" id="home-logo" style="background:gold; color:black;">EV</div>  
+                <div class="team-logo-lg" id="home-logo" style="background:gold; color:black;" data-lang="home_short">EV</div>  
                 <span id="home-name">Fenerbahçe</span>  
             </div>  
             <div style="font-size:24px; font-weight:bold;">VS</div>  
             <div style="text-align:center;">  
-                <div class="team-logo-lg" id="away-logo" style="background:gray; color:white;">DEP</div>  
+                <div class="team-logo-lg" id="away-logo" style="background:gray; color:white;" data-lang="away_short">DEP</div>  
                 <span id="away-name">Galatasaray</span>  
             </div>  
         </div>  
-        <p style="font-size:12px; margin-bottom:10px;">Lig Konumu: <span id="opponent-rank">2.</span> Sıra</p>  
-        <button id="start-match-btn" class="btn btn-primary" onclick="goToMatchScreen()">MAÇI BAŞLAT</button>  
-        <div id="cooldown-timer" style="margin-top:10px; color:var(--accent); display:none;">Sonraki maç: <span id="cd-time">00:30</span></div>  
+        <p style="font-size:12px; margin-bottom:10px;"><span data-lang="league_rank">Lig Konumu:</span> <span id="opponent-rank">2.</span> <span data-lang="rank_suffix">Sıra</span></p>  
+        <button id="start-match-btn" class="btn btn-primary" onclick="goToMatchScreen()" data-lang="start_match">MAÇI BAŞLAT</button>  
+        <div id="cooldown-timer" style="margin-top:10px; color:var(--accent); display:none;"><span data-lang="next_match">Sonraki maç:</span> <span id="cd-time">00:30</span></div>  
     </div>  
 
     <div style="background:rgba(0,0,0,0.5); padding:10px; border-radius:10px;">  
-        <h4>Lig Durumu (İlk 5)</h4>  
+        <h4 data-lang="standings_mini">Lig Durumu (İlk 5)</h4>  
         <div id="mini-standings"></div>  
     </div>  
 </div>  
@@ -572,20 +761,20 @@
 <div id="sidebar" class="sidebar">  
     <div style="text-align:right; font-size:24px;" onclick="toggleSidebar()">&times;</div>  
     <ul>  
-        <li onclick="showPage('dashboard-page'); toggleSidebar()">Ana Sayfa</li>  
-        <li onclick="showSquad(); toggleSidebar()">Kadrom</li>  
-        <li onclick="showTransferList(); toggleSidebar()">Transfer Listesi</li>  
-        <li onclick="showFormation(); toggleSidebar()">Diziliş</li>  
-        <li onclick="showTactics(); toggleSidebar()">Taktikler</li>  
-        <li onclick="showStandings(); toggleSidebar()">Puan Durumu</li>  
-        <li onclick="logout(); toggleSidebar()" style="color:var(--accent);">Çıkış Yap</li>  
+        <li onclick="showPage('dashboard-page'); toggleSidebar()" data-lang="home">Ana Sayfa</li>  
+        <li onclick="showSquad(); toggleSidebar()" data-lang="squad">Kadrom</li>  
+        <li onclick="showTransferList(); toggleSidebar()" data-lang="transfer">Transfer Listesi</li>  
+        <li onclick="showFormation(); toggleSidebar()" data-lang="lineup">Diziliş</li>  
+        <li onclick="showTactics(); toggleSidebar()" data-lang="tactics">Taktikler</li>  
+        <li onclick="showStandings(); toggleSidebar()" data-lang="table">Puan Durumu</li>  
+        <li onclick="logout(); toggleSidebar()" style="color:var(--accent);" data-lang="logout">Çıkış Yap</li>  
     </ul>  
 </div>  
 
 <div id="match-screen-page" class="page match-screen-ui">  
     <div class="header">  
-        <h3>MAÇ GÜNÜ</h3>  
-        <button id="speed-btn" class="btn-speed" onclick="toggleSpeed()">HIZ: 1X</button>  
+        <h3 data-lang="match_day">MAÇ GÜNÜ</h3>  
+        <button id="speed-btn" class="btn-speed" onclick="toggleSpeed()" data-lang="speed_1x">HIZ: 1X</button>  
     </div>  
     <div style="display:flex; justify-content:space-between; padding:20px;">  
          <div id="m-home-name">EV</div>  
@@ -596,35 +785,63 @@
         <span id="score-home">0</span> - <span id="score-away">0</span>  
     </div>  
       
-    <div class="commentary-box" id="commentary-feed">  
+    <div class="commentary-feed" id="commentary-feed" style="height: 150px; overflow-y: auto; background: rgba(0,0,0,0.5); border: 1px solid #555; padding: 10px; margin: 20px 0; text-align: left; font-size: 14px;">  
         </div>  
 
-    <button id="start-simulation-btn" class="btn btn-primary" onclick="startMatchSimulation()">BAŞLAMA DÜDÜĞÜ</button>
+    <button id="start-simulation-btn" class="btn btn-primary" onclick="startMatchSimulation()" data-lang="kick_off">BAŞLAMA DÜDÜĞÜ</button>
     <div id="half-time-controls" style="display:none;">
-        <p style="color:var(--gold); margin-bottom:10px;">İLK YARI BİTTİ!</p>
-        <button class="btn btn-secondary" onclick="showTactics()">TAKTİK DEĞİŞTİR</button>
-        <button class="btn btn-primary" onclick="resumeMatchSimulation()">2. YARIYA BAŞLA</button>
+        <p style="color:var(--gold); margin-bottom:10px;" data-lang="half_time">İLK YARI BİTTİ!</p>
+        <button class="btn btn-secondary" onclick="showTactics()" data-lang="change_tactic">TAKTİK DEĞİŞTİR</button>
+        <button class="btn btn-primary" onclick="resumeMatchSimulation()" data-lang="start_2nd">2. YARIYA BAŞLA</button>
     </div>
-    <button id="end-match-btn" class="btn btn-secondary" style="display:none;" onclick="endMatch()">MAÇTAN ÇIK</button>  
-    <button id="match-stats-btn" class="btn btn-secondary" style="display:none;" onclick="showMatchStats()">İSTATİSTİKLER</button>  
+    <button id="end-match-btn" class="btn btn-secondary" style="display:none;" onclick="endMatch()" data-lang="exit_match">MAÇTAN ÇIK</button>  
+    <button id="match-stats-btn" class="btn btn-secondary" style="display:none;" onclick="showMatchStats()" data-lang="stats">İSTATİSTİKLER</button>  
       
     <div id="match-stats-panel" style="display:none; text-align:left; font-size:12px; margin-top:20px; background:rgba(0,0,0,0.6); padding:15px; border-radius:10px;">  
-        <h4 style="border-bottom:1px solid #555; padding-bottom:5px;">Maç Özeti</h4>  
-        <p id="stats-goals" style="color:var(--primary);">Goller: </p>  
-        <p id="stats-assists" style="color:var(--gold);">Asistler: </p>
-        <p id="stats-cards" style="color:var(--accent);">Kartlar: </p>  
+        <h4 style="border-bottom:1px solid #555; padding-bottom:5px;" data-lang="match_summary">Maç Özeti</h4>  
+        <p id="stats-goals" style="color:var(--primary);"><span data-lang="goals">Goller:</span> </p>  
+        <p id="stats-assists" style="color:var(--gold);"><span data-lang="assists">Asistler:</span> </p>
+        <p id="stats-cards" style="color:var(--accent);"><span data-lang="cards">Kartlar:</span> </p>  
     </div>  
 </div>  
+
+<div id="league-finish-page" class="page league-finish-screen">
+    <h1 id="finish-title" class="cup-title" data-lang="congrats">TEBRİKLER!</h1>
+    <img src="https://cdn-icons-png.flaticon.com/512/3112/3112946.png" class="cup-display" alt="Kupa">
+    <h2 id="finish-rank-text">Ligi 1. Sırada Bitirdiniz!</h2>
+    <div id="finish-reward-text" class="reward-text">Ödülünüz: 20M</div>
+    <button class="btn btn-primary" id="league-finish-btn" onclick="closeLeagueFinishPage()" data-lang="continue">DEVAM ET</button>
+</div>
+
+<div id="cup-draw-page" class="page" style="text-align:center; justify-content:center;">
+    <h1 id="cup-name-draw" class="cup-title">ŞAMPİYONLAR LİGİ</h1>
+    <p data-lang="drawing">Kura Çekimi Yapılıyor...</p>
+    <div class="draw-anim-container">
+        <div class="ball-container">
+            <div class="draw-ball">?</div>
+            <div class="draw-ball">?</div>
+        </div>
+        <div id="draw-result" style="font-size:20px; font-weight:bold; margin-top:20px;"></div>
+    </div>
+    <button id="start-cup-match-btn" class="btn btn-primary" style="display:none; margin-top:20px;" onclick="goToMatchScreen()" data-lang="start_match">MAÇI BAŞLAT</button>
+</div>
+
+<div id="cup-result-page" class="page eliminated-theme" style="text-align:center; justify-content:center;">
+    <h1 id="cup-res-title" data-lang="eliminated">ELENDİNİZ!</h1>
+    <p id="cup-res-info">Yarı finalde veda ettiniz.</p>
+    <div id="cup-res-money" class="reward-text">Kazanılan: 10M</div>
+    <button id="cup-action-btn" class="btn btn-primary" data-lang="start_new_season">YENİ SEZONA BAŞLA</button>
+</div>
 
 <div id="squad-page" class="page">  
     <div class="header">  
          <div onclick="showPage('dashboard-page')"><i class="fa-solid fa-arrow-left"></i></div>  
-         <div>KADROM</div>  
+         <div data-lang="squad">KADROM</div>  
          <div></div>  
     </div>  
     <div style="text-align:center; padding:10px;">  
         <h2 id="squad-team-name"></h2>  
-        <p>Toplam Değer: <span id="squad-total-value">0M</span></p>  
+        <p><span data-lang="total_value">Toplam Değer:</span> <span id="squad-total-value">0M</span></p>  
     </div>  
     <div id="my-players-list">  
         </div>  
@@ -633,13 +850,13 @@
 <div id="transfer-page" class="page">  
     <div class="header">  
         <div onclick="showPage('dashboard-page')"><i class="fa-solid fa-arrow-left"></i></div>  
-        <div>TRANSFER MARKET</div>  
+        <div data-lang="transfer_market">TRANSFER MARKET</div>  
         <div><span id="transfer-money"></span>M</div>  
     </div>  
     <div id="transfer-list-container">  
         </div>  
     <div style="margin-top:30px;">  
-        <h3>Transfer Geçmişi</h3>  
+        <h3 data-lang="transfer_history">Transfer Geçmişi</h3>  
         <ul id="transfer-history" style="font-size:12px; color:#aaa; list-style:none;"></ul>  
     </div>  
 </div>  
@@ -647,31 +864,38 @@
 <div id="standings-page" class="page">  
     <div class="header">  
         <div onclick="showPage('dashboard-page')"><i class="fa-solid fa-arrow-left"></i></div>  
-        <div>PUAN DURUMU</div>  
+        <div data-lang="table">PUAN DURUMU</div>  
         <div></div>  
     </div>  
-    <table>  
-        <thead>  
-            <tr>  
-                <th>Sıra</th>  
-                <th>Takım</th>  
-                <th>O</th>  
-                <th>P</th>  
-                <th>Av</th>  
-            </tr>  
-        </thead>  
-        <tbody id="standings-body"></tbody>  
-    </table>  
+    <div style="display:flex; gap:5px; margin-bottom:10px;">
+        <button class="btn btn-speed" onclick="renderStandings('super-lig')">Süper Lig</button>
+        <button class="btn btn-speed" onclick="renderStandings('premier-lig')">Premier</button>
+        <button class="btn btn-speed" onclick="renderStandings('la-liga')">La Liga</button>
+    </div>
+    <div style="overflow-x:auto;">
+        <table>  
+            <thead>  
+                <tr>  
+                    <th data-lang="rank_head">Sıra</th>  
+                    <th data-lang="team_head">Takım</th>  
+                    <th>O</th>  
+                    <th>P</th>  
+                    <th>Av</th>  
+                </tr>  
+            </thead>  
+            <tbody id="standings-body"></tbody>  
+        </table>  
+    </div>
 </div>  
 
 <div id="formation-page" class="page">  
     <div class="header">  
         <div onclick="showPage('dashboard-page')"><i class="fa-solid fa-arrow-left"></i></div>  
-        <div>DİZİLİŞ (4-4-2)</div>  
+        <div><span data-lang="lineup">DİZİLİŞ</span> (4-4-2)</div>  
         <div></div>  
     </div>  
     <div style="text-align:center; margin-top:20px;">  
-        <p style="font-size:12px; color:#aaa; margin-bottom:10px;">Mevkilere tıklayarak oyuncu yerleştirin.</p>  
+        <p style="font-size:12px; color:#aaa; margin-bottom:10px;" data-lang="pitch_info">Mevkilere tıklayarak oyuncu yerleştirin.</p>  
         <div id="soccer-pitch" style="background:linear-gradient(#2ecc71, #27ae60); width:280px; height:400px; margin:0 auto; border:4px solid white; position:relative; border-radius:5px;">  
             <div class="pitch-slot" id="pos-KL" style="position:absolute; bottom:10px; left:115px;" onclick="selectPlayerForPos('KL')">KL</div>  
             <div class="pitch-slot" id="pos-SLB" style="position:absolute; bottom:80px; left:10px;" onclick="selectPlayerForPos('SLB')">SLB</div>  
@@ -694,58 +918,69 @@
 <div id="tactics-page" class="page">
     <div class="header">  
         <div onclick="showPage('dashboard-page')"><i class="fa-solid fa-arrow-left"></i></div>  
-        <div>TAKTIKLER</div>  
+        <div data-lang="tactics">TAKTIKLER
+        div>  
         <div></div>  
     </div> 
     <div class="tactics-grid">
         <div class="tactic-card">
-            <label>Oyun Stili</label>
+            <label data-lang="style_label">Oyun Stili</label>
             <select id="tactic-style">
-                <option value="pasli">Paslı Oyun</option>
-                <option value="kanat">Kanatları Kullan</option>
-                <option value="uzun">Uzun Top</option>
-                <option value="kontra">Kontra Atak</option>
+                <option value="pasli" data-lang="opt_passing">Paslı Oyun</option>
+                <option value="kanat" data-lang="opt_wings">Kanatları Kullan</option>
+                <option value="uzun" data-lang="opt_long">Uzun Top</option>
+                <option value="kontra" data-lang="opt_counter">Kontra Atak</option>
             </select>
         </div>
         <div class="tactic-card">
-            <label>Markaj</label>
+            <label data-lang="marking_label">Markaj</label>
             <select id="tactic-marking">
-                <option value="alan">Alan Markajı</option>
-                <option value="adam">Adam Markajı</option>
+                <option value="alan" data-lang="opt_area">Alan Markajı</option>
+                <option value="adam" data-lang="opt_man">Adam Markajı</option>
             </select>
         </div>
         <div class="tactic-card">
-                      <label>Mücadele</label>
+                      <label data-lang="aggression_label">Mücadele</label>
             <select id="tactic-aggression">
-                <option value="dikkatli">Çok Dikkatli</option>
-                <option value="normal" selected>Normal</option>
-                <option value="agresif">Agresif</option>
-                <option value="cok-agresif">Çok Agresif</option>
+                <option value="dikkatli" data-lang="opt_careful">Çok Dikkatli</option>
+                <option value="normal" selected data-lang="opt_normal">Normal</option>
+                <option value="agresif" data-lang="opt_aggressive">Agresif</option>
+                <option value="cok-agresif" data-lang="opt_v_aggressive">Çok Agresif</option>
             </select>
         </div>
         <div class="tactic-card">
-            <label>Baskı (Press)</label>
+            <label data-lang="press_label">Baskı (Press)</label>
             <select id="tactic-press">
-                <option value="düşük">Düşük Baskı</option>
-                <option value="dengeli" selected>Dengeli</option>
-                <option value="yüksek">Yüksek Baskı</option>
+                <option value="düşük" data-lang="opt_low">Düşük Baskı</option>
+                <option value="dengeli" selected data-lang="opt_balanced">Dengeli</option>
+                <option value="yüksek" data-lang="opt_high">Yüksek Baskı</option>
             </select>
         </div>
     </div>
-    <button class="btn btn-primary" style="margin-top:20px;" onclick="saveTactics()">AYARLARI KAYDET</button>
+    <button class="btn btn-primary" style="margin-top:20px;" onclick="saveTactics()" data-lang="save_tactics">AYARLARI KAYDET</button>
 </div>
 
 <div id="player-select-modal" class="modal">
     <div class="contract-paper" style="max-height:80vh; overflow-y:auto;">
-        <h3 id="select-pos-title">Pozisyon Seç</h3>
+        <h3 id="select-pos-title" data-lang="select_pos">Pozisyon Seç</h3>
         <div id="available-players-list"></div>
-        <button class="btn btn-danger" onclick="closePlayerModal()">KAPAT</button>
+        <button class="btn btn-danger" onclick="closePlayerModal()" data-lang="close">KAPAT</button>
     </div>
 </div>
 
 <script>  
     let handTimer;
     const HAND_DELAY = 1000; 
+
+    // --- DİL VERİLERİ ---
+    const langData = {
+        tr: {
+            login: "Giriş Yap", register: "Kayıt Ol", about: "Hakkımızda", start_btn: "BAŞLA", settings_title: "AYARLAR", select_lang: "Dil Seç", music_vol: "Müzik", sfx_vol: "Ses Efektleri", save_back: "KAYDET / GERİ DÖN", login_title: "GİRİŞ YAP", username_ph: "Kullanıcı Adı", password_ph: "Şifre", login_btn: "GİRİŞ YAP", not_reg: "Kayıt olmadın mı?", forgot_pass: "Şifremi Unuttum", back_btn: "Geri Dön", register_title: "KAYIT OL", reg_u_ph: "Kullanıcı Adı (8 hane + sayı)", reg_e_ph: "Gmail (@gmail.com)", reg_p_ph: "Şifre (8 hane + sayı)", register_btn: "KAYIT OL", back_login: "Giriş'e Dön", forgot_title: "ŞİFREMİ UNUTTUM", forgot_info: "Kayıtlı bilgilerinizi giriniz.", check_btn: "Sorgula", reset_title: "ŞİFRE SIFIRLAMA", new_p2_ph: "Yeni Şifre (Tekrar)", reset_btn: "Şifreyi Yenile", about_title: "Hakkımızda", select_league: "Lig Seç", super_lig: "Süper Lig", turkey: "Türkiye", premier_lig: "Premier Lig", england: "İngiltere", la_liga: "La Liga", spain: "İspanya", back_to_leagues: "Liglere Dön", select_team: "Takım Seç", contract_title: "RESMİ SÖZLEŞME", team: "Takım", value: "Değer", player_count: "Oyuncu Sayısı", contract_info: "Bu sözleşmeyi imzalayarak kulübün tüm sorumluluğunu almayı kabul ediyorsunuz.", user: "Kullanıcı", sign_btn: "İMZALA VE BAŞLA", cancel_btn: "İPTAL", logout_msg: "Çıkış yapmak üzeresiniz.", yes: "Evet", match: "MAÇ", home_short: "EV", away_short: "DEP", league_rank: "Lig Konumu", rank_suffix: "Sıra", start_match: "MAÇI BAŞLAT", next_match: "Sonraki maç", standings_mini: "Lig Durumu (İlk 5)", home: "Ana Sayfa", squad: "Kadrom", transfer: "Transfer Listesi", lineup: "Diziliş", tactics: "Taktikler", table: "Puan Durumu", logout: "Çıkış Yap", match_day: "MAÇ GÜNÜ", speed_1x: "HIZ: 1X", kick_off: "BAŞLAMA DÜDÜĞÜ", half_time: "İLK YARI BİTTİ!", change_tactic: "TAKTİK DEĞİŞTİR", start_2nd: "2. YARIYA BAŞLA", exit_match: "MAÇTAN ÇIK", stats: "İSTATİSTİKLER", match_summary: "Maç Özeti", goals: "Goller", assists: "Asistler", cards: "Kartlar", congrats: "TEBRİKLER!", continue: "DEVAM ET", drawing: "Kura Çekimi Yapılıyor...", eliminated: "ELENDİNİZ!", start_new_season: "YENİ SEZONA BAŞLA", total_value: "Toplam Değer", transfer_market: "TRANSFER MARKET", transfer_history: "Transfer Geçmişi", rank_head: "Sıra", team_head: "Takım", pitch_info: "Mevkilere tıklayarak oyuncu yerleştirin.", style_label: "Oyun Stili", opt_passing: "Paslı Oyun", opt_wings: "Kanatları Kullan", opt_long: "Uzun Top", opt_counter: "Kontra Atak", marking_label: "Markaj", opt_area: "Alan Markajı", opt_man: "Adam Markajı", aggression_label: "Mücadele", opt_careful: "Çok Dikkatli", opt_normal: "Normal", opt_aggressive: "Agresif", opt_v_aggressive: "Çok Agresif", press_label: "Baskı (Press)", opt_low: "Düşük Baskı", opt_balanced: "Dengeli", opt_high: "Yüksek Baskı", save_tactics: "AYARLARI KAYDET", select_pos: "Pozisyon Seç", close: "KAPAT", go_to_final: "FİNAL MAÇINA GİT"
+        },
+        en: {
+            login: "Login", register: "Register", about: "About Us", start_btn: "START", settings_title: "SETTINGS", select_lang: "Select Language", music_vol: "Music", sfx_vol: "SFX", save_back: "SAVE / BACK", login_title: "LOGIN", username_ph: "Username", password_ph: "Password", login_btn: "LOGIN", not_reg: "Not registered?", forgot_pass: "Forgot Password", back_btn: "Back", register_title: "REGISTER", reg_u_ph: "Username (8 chars + number)", reg_e_ph: "Gmail (@gmail.com)", reg_p_ph: "Password (8 chars + number)", register_btn: "REGISTER", back_login: "Back to Login", forgot_title: "FORGOT PASSWORD", forgot_info: "Enter your registered info.", check_btn: "Search", reset_title: "RESET PASSWORD", new_p2_ph: "New Password (Repeat)", reset_btn: "Reset Password", about_title: "About Us", select_league: "Select League", super_lig: "Super League", turkey: "Turkey", premier_lig: "Premier League", england: "England", la_liga: "La Liga", spain: "Spain", back_to_leagues: "Back to Leagues", select_team: "Select Team", contract_title: "OFFICIAL CONTRACT", team: "Team", value: "Value", player_count: "Players", contract_info: "By signing this, you take full responsibility for the club and management.", user: "User", sign_btn: "SIGN & START", cancel_btn: "CANCEL", logout_msg: "You are about to logout.", yes: "Yes", match: "MATCH", home_short: "HOME", away_short: "AWAY", league_rank: "League Rank", rank_suffix: "Pos", start_match: "START MATCH", next_match: "Next match", standings_mini: "League Standings (Top 5)", home: "Home", squad: "My Squad", transfer: "Transfer List", lineup: "Formation", tactics: "Tactics", table: "Standings", logout: "Logout", match_day: "MATCH DAY", speed_1x: "SPEED: 1X", kick_off: "KICK OFF", half_time: "HALF TIME!", change_tactic: "CHANGE TACTIC", start_2nd: "START 2nd HALF", exit_match: "EXIT MATCH", stats: "STATS", match_summary: "Match Summary", goals: "Goals", assists: "Assists", cards: "Cards", congrats: "CONGRATS!", continue: "CONTINUE", drawing: "Drawing Lots...", eliminated: "ELIMINATED!", start_new_season: "START NEW SEASON", total_value: "Total Value", transfer_market: "TRANSFER MARKET", transfer_history: "Transfer History", rank_head: "Rank", team_head: "Team", pitch_info: "Click positions to place players.", style_label: "Play Style", opt_passing: "Passing Game", opt_wings: "Wing Play", opt_long: "Long Ball", opt_counter: "Counter Attack", marking_label: "Marking", opt_area: "Zonal Marking", opt_man: "Man-to-Man", aggression_label: "Tackle", opt_careful: "Very Careful", opt_normal: "Normal", opt_aggressive: "Aggressive", opt_v_aggressive: "Very Aggressive", press_label: "Pressing", opt_low: "Low Press", opt_balanced: "Balanced", opt_high: "High Press", save_tactics: "SAVE TACTICS", select_pos: "Select Position", close: "CLOSE", go_to_final: "GO TO FINAL"
+        }
+    };
 
     window.addEventListener('load', function() {
         setTimeout(() => {
@@ -754,48 +989,59 @@
             setTimeout(() => {
                 intro.style.display = 'none';
                 showPage('start-screen');
+                // Müziği başlat
+                const music = document.getElementById('game-music');
+                music.play().catch(() => {
+                    console.log("Müzik etkileşim bekliyor.");
+                });
             }, 1000); 
         }, 3000); 
     });
 
     const TEAMS_DATA = {  
         "super-lig": [  
-            { name: "Fenerbahçe", value: 274, pCount: 31, color: "yellow" },  
-            { name: "Galatasaray", value: 289, pCount: 27, color: "red" },  
-            { name: "Beşiktaş", value: 154, pCount: 29, color: "black" },  
-            { name: "Trabzonspor", value: 106, pCount: 29, color: "purple" },  
-            { name: "Başakşehir FK", value: 70, pCount: 29, color: "orange" },  
-            { name: "Kayserispor", value: 21, pCount: 28, color: "gold" },  
-            { name: "Samsunspor", value: 51, pCount: 29, color: "red" },  
-            { name: "Göztepe", value: 40, pCount: 25, color: "yellow" },  
-            { name: "Ağrıspor", value: 10, pCount: 41, color: "white" },  
-            { name: "Alanyaspor", value: 26, pCount: 29, color: "orange" }  
+            { name: "Istanbul Yellow", value: 274, pCount: 31, color: "yellow" },  
+            { name: "Istanbul Red", value: 289, pCount: 27, color: "red" },  
+            { name: "Istanbul Black", value: 154, pCount: 29, color: "black" },  
+            { name: "Trabzon Blue", value: 106, pCount: 29, color: "purple" },  
+            { name: "Istanbul Orange", value: 70, pCount: 29, color: "orange" },  
+            { name: "Kayseri Yellow", value: 21, pCount: 28, color: "gold" },  
+            { name: "Samsun Red", value: 51, pCount: 29, color: "red" },  
+            { name: "Göztepe Y.R", value: 40, pCount: 25, color: "yellow" },  
+            { name: "Konya G.W", value: 30, pCount: 41, color: "white" },  
+            { name: "Alanya O.G", value: 26, pCount: 29, color: "orange" }  
         ],  
         "la-liga": [  
-            { name: "Real Madrid", value: 1350, pCount: 24, color: "white" },  
-            { name: "Barcelona", value: 1112, pCount: 24, color: "blue" },  
-            { name: "Sevilla", value: 132, pCount: 28, color: "red" },  
-            { name: "Atletico Madrid", value: 598, pCount: 23, color: "red" },  
-            { name: "Villarreal", value: 263, pCount: 26, color: "yellow" },  
-            { name: "Espanyol", value: 107, pCount: 24, color: "blue" },  
-            { name: "Real Sociedad", value: 250, pCount: 26, color: "blue" },  
-            { name: "Real Betis", value: 220, pCount: 26, color: "green" },  
-            { name: "Getafe", value: 68, pCount: 22, color: "blue" },  
-            { name: "Valencia", value: 156, pCount: 23, color: "white" }  
+            { name: "MD White", value: 1350, pCount: 24, color: "white" },  
+            { name: "Catolonia FC", value: 1112, pCount: 24, color: "blue" },  
+            { name: "Andalusia FC", value: 132, pCount: 28, color: "red" },  
+            { name: "Madrid Rosas", value: 598, pCount: 23, color: "red" },  
+            { name: "Vila Yellow FC", value: 263, pCount: 26, color: "yellow" },  
+            { name: "Cornella Blue", value: 107, pCount: 24, color: "blue" },
+            { name: "Vasconia", value: 250, pCount: 26, color: "blue" },  
+            { name: "Heliopolis", value: 220, pCount: 26, color: "green" },  
+            { name: "Geta Blue", value: 68, pCount: 22, color: "blue" },  
+            { name: "Cid Valencia", value: 156, pCount: 23, color: "white" }  
         ],  
         "premier-lig": [  
-            { name: "Manchester City", value: 1221, pCount: 27, color: "skyblue" },  
-            { name: "Arsenal", value: 1331, pCount: 25, color: "red" },  
-            { name: "Tottenham", value: 838, pCount: 27, color: "white" },  
-            { name: "Chelsea", value: 1118, pCount: 31, color: "blue" },  
-            { name: "Aston Villa", value: 527, pCount: 24, color: "purple" },  
-            { name: "Liverpool", value: 1004, pCount: 26, color: "red" },  
-            { name: "Man United", value: 720, pCount: 26, color: "red" },  
-            { name: "Everton", value: 402, pCount: 25, color: "blue" },  
-            { name: "Crystal Palace", value: 536, pCount: 29, color: "blue" },  
-            { name: "Brighton", value: 526, pCount: 28, color: "blue" }  
+            { name: "Man Blue", value: 1221, pCount: 27, color: "skyblue" },  
+            { name: "North London", value: 1331, pCount: 25, color: "red" },  
+            { name: "Tottenham White", value: 838, pCount: 27, color: "white" },  
+            { name: "London FC", value: 1118, pCount: 31, color: "blue" },  
+            { name: "West Midlands", value: 527, pCount: 24, color: "purple" },  
+            { name: "Merseyside Red", value: 1004, pCount: 26, color: "red" },  
+            { name: "Man Red", value: 720, pCount: 26, color: "red" },  
+            { name: "Merseyside Blue", value: 402, pCount: 25, color: "blue" },  
+            { name: "South London B", value: 536, pCount: 29, color: "blue" },  
+            { name: "Brighton Blue", value: 526, pCount: 28, color: "blue" }  
         ]  
     };  
+
+    const LEAGUE_REWARDS = {
+        "super-lig": [20, 15, 12, 10, 7, 5, 4, 3, 2, 1],
+        "premier-lig": [40, 35, 30, 25, 20, 17, 15, 12, 10, 7],
+        "la-liga": [40, 30, 27, 25, 20, 17, 15, 12, 10, 5]
+    };
 
     const PLAYER_NAMES = ["Icardi", "Dzeko", "Tadic", "Muslera", "Gedson", "Immobile", "Visca", "Mertens", "Fred", "Ferdi", "Semih", "Barış", "Kerem", "Torreira", "Szymanski", "Livakovic", "Onana", "Rashica", "Muci", "Rafa Silva", "Osimhen", "Davinson", "Nelsson", "Abdulkerim", "Osayi", "Djiku", "Becao", "İrfan", "Yunus", "Batshuayi", "Pepe", "Trezeguet", "Mendy", "Uğurcan", "Piatek", "Davidson", "Januzaj", "Okaka", "Balotelli", "Nani", "Ali", "Veli", "Ahmet", "Mehmet", "Can", "Burak", "Cenk", "Hakan", "Arda", "Kenan", "Salih", "Mert"];  
     const SURNAMES = ["Yılmaz", "Kaya", "Demir", "Çelik", "Şahin", "Yıldız", "Öztürk", "Aydın", "Özdemir", "Arslan", "Koç", "Kurt", "Tekin", "Yalçın", "Erdoğan", "Aslan", "Polat", "Güler", "Tosun", "Ünder"];  
@@ -803,26 +1049,91 @@
     let gameState = {  
         user: null, team: null, league: null, money: 0, players: [], fixture: [], currentMatchIndex: 0, standings: {}, lastMatchTime: 0,
         tactics: { style: 'pasli', marking: 'alan', aggression: 'normal', press: 'dengeli' },
-        lineup: {} 
+        lineup: {},
+        moral: 0,
+        halfTimeTacticUsed: false,
+        season: 1,
+        isCupActive: false,
+        cupName: "",
+        cupStage: "Yarı Final",
+        settings: {
+            lang: "tr",
+            musicVol: 100,
+            sfxVol: 100
+        }
     };  
 
     let matchInterval = null;  
     let matchSpeed = 1000; 
     let isMatchRunning = false;  
     let currentMatchSecond = 0;  
-    let isSecondHalf = false; 
+    let isSecondHalf = false;  
     let matchEvents = { goals: [], assists: [], redCards: [] };
+    let homeScore = 0; 
+    let awayScore = 0;
 
     const registeredUsers = JSON.parse(localStorage.getItem('proSoccerUsers')) || [];  
 
     document.addEventListener('click', function(e) {
-        if(e.target.tagName === 'BUTTON' || e.target.closest('.card') || e.target.classList.contains('menu-btn') || e.target.classList.contains('pitch-slot') || e.target.classList.contains('start-menu-btn')) {
+        if(e.target.tagName === 'BUTTON' || e.target.closest('.card') || e.target.classList.contains('menu-btn') || e.target.classList.contains('pitch-slot') || e.target.classList.contains('start-menu-btn') || e.target.classList.contains('settings-btn-main') || e.target.classList.contains('lang-opt')) {
             playSound('sound-click');
+            // Müzik çalmaya başlamamışsa (browser engeli) burada zorla başlat
+            const music = document.getElementById('game-music');
+            if(music.paused && gameState.settings.musicVol > 0) music.play();
         }
         if(document.getElementById('start-screen').classList.contains('active')) {
             resetHandTimer();
         }
     });
+
+    function setLanguage(lang) {
+        gameState.settings.lang = lang;
+        updateLanguageUI();
+        saveGame();
+    }
+
+    function updateLanguageUI() {
+        const lang = gameState.settings.lang;
+        const data = langData[lang];
+
+        // Seçili dili görsel olarak işaretle
+        document.querySelectorAll('.lang-opt').forEach(el => el.classList.remove('selected'));
+        document.getElementById(`lang-${lang}`).classList.add('selected');
+
+        // Text Contentleri Güncelle
+        document.querySelectorAll('[data-lang]').forEach(el => {
+            const key = el.getAttribute('data-lang');
+            if(data[key]) el.innerText = data[key];
+        });
+
+        // Placeholderları Güncelle
+        document.querySelectorAll('[data-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-placeholder');
+            if(data[key]) el.placeholder = data[key];
+        });
+
+        // Hakkımızda Metni (Özel durum)
+        const aboutContainer = document.getElementById('about-text-container');
+        if(lang === 'tr') {
+            aboutContainer.innerHTML = `<p>Bu oyun, 3 Ocak 2026 tarihinde geliştirilme sürecine başlanmış bir projedir...</p><br><p>Amacımız Türk bir geliştirici olarak keyifli bir futbol deneyimi sunmaktır.</p>`;
+        } else {
+            aboutContainer.innerHTML = `<p>This game is a project started on January 3, 2026...</p><br><p>Our goal is to provide a fun football experience as a Turkish developer.</p>`;
+        }
+    }
+
+    function updateVolume(type) {
+        if(type === 'music') {
+            const val = document.getElementById('music-slider').value;
+            gameState.settings.musicVol = parseInt(val);
+            document.getElementById('music-val').innerText = val;
+            document.getElementById('game-music').volume = val / 100;
+        } else {
+            const val = document.getElementById('sfx-slider').value;
+            gameState.settings.sfxVol = parseInt(val);
+            document.getElementById('sfx-val').innerText = val;
+        }
+        saveGame();
+    }
 
     function toggleHamburger() {
         const m = document.getElementById('hamburger-menu');
@@ -837,12 +1148,13 @@
         if(pageId === 'start-screen') {
             resetHandTimer();
         } else {
-            document.getElementById('hamburger-menu').style.display = 'none';
+            const hm = document.getElementById('hamburger-menu');
+            if(hm) hm.style.display = 'none';
             stopHandAnim();
         }
+        updateLanguageUI();
     }  
 
-    // EL ANİMASYONU FIX - GÜNCELLENDİ
     function resetHandTimer() {
         stopHandAnim();
         handTimer = setTimeout(startHandAnim, HAND_DELAY);
@@ -884,7 +1196,11 @@
 
     function playSound(id) {
         const s = document.getElementById(id);
-        if(s) { s.currentTime = 0; s.play().catch(e => {}); }
+        if(s) { 
+            s.currentTime = 0; 
+            s.volume = gameState.settings.sfxVol / 100;
+            s.play().catch(e => {}); 
+        }
     }
 
     function saveGame() {
@@ -895,7 +1211,22 @@
     function loadGame(username) {
         const key = username ? 'proSoccerSave_' + username : 'proSoccerSave_Guest';
         const savedData = localStorage.getItem(key);
-        if(savedData) { gameState = JSON.parse(savedData); return true; }
+        if(savedData) { 
+            let parsed = JSON.parse(savedData);
+            if(parsed.currentMatchIndex < 20) {
+                document.getElementById('league-finish-page').style.display = 'none';
+                document.getElementById('league-finish-page').classList.remove('active');
+            }
+            gameState = parsed; 
+            // Ses ve dil ayarlarını uygula
+            document.getElementById('game-music').volume = gameState.settings.musicVol / 100;
+            document.getElementById('music-slider').value = gameState.settings.musicVol;
+            document.getElementById('music-val').innerText = gameState.settings.musicVol;
+            document.getElementById('sfx-slider').value = gameState.settings.sfxVol;
+            document.getElementById('sfx-val').innerText = gameState.settings.sfxVol;
+            updateLanguageUI();
+            return true; 
+        }
         return false;
     }
 
@@ -903,12 +1234,16 @@
         const u = document.getElementById('reg-username').value;  
         const e = document.getElementById('reg-email').value;  
         const p = document.getElementById('reg-password').value;  
-        if (u.length < 8 || !/\d/.test(u)) return toast("Kullanıcı adı 8 hane ve sayı içermeli!");  
-        if (!e.includes("@gmail.com")) return toast("Gmail @gmail.com içermeli!");  
-        if (p.length < 8 || !/\d/.test(p)) return toast("Şifre 8 hane ve sayı içermeli!");  
+
+        const checkDup = registeredUsers.find(acc => acc.u === u || acc.e === e);
+        if(checkDup) return toast(gameState.settings.lang === 'tr' ? "Bu kullanıcı zaten var!" : "User already exists!");
+
+        if (u.length < 8 || !/\d/.test(u)) return toast("Min 8 chars + number!");  
+        if (!e.includes("@gmail.com")) return toast("Must be @gmail.com!");  
+        if (p.length < 8 || !/\d/.test(p)) return toast("Password min 8 chars!");  
         registeredUsers.push({ u, e, p });  
         localStorage.setItem('proSoccerUsers', JSON.stringify(registeredUsers));  
-        toast("Kayıt Başarılı! Giriş yapınız.");  
+        toast("Success!");  
         showPage('login-page');  
     }  
 
@@ -918,17 +1253,17 @@
         const user = registeredUsers.find(acc => acc.u === u && acc.p === p);  
         if (user) { 
             if(loadGame(u)) {
-                toast("Kayıtlı oyun yüklendi!");
+                toast("Game Loaded!");
                 showPage('dashboard-page');
                 updateDashboard();
                 updatePitchUI(); 
             } else {
                 gameState.user = user; 
-                toast("Giriş Başarılı!"); 
+                toast("Welcome!"); 
                 showPage('league-select-page'); 
             }
         } 
-        else { toast("Hatalı kullanıcı adı veya şifre!"); }  
+        else { toast("Error!"); }  
     }  
 
     let resetUser = null;  
@@ -936,16 +1271,17 @@
         const u = document.getElementById('forgot-username').value;  
         const e = document.getElementById('forgot-email').value;  
         resetUser = registeredUsers.find(acc => acc.u === u && acc.e === e);  
-        if (resetUser) { showPage('reset-password-page'); } else { toast("Bilgiler uyuşmuyor!"); }  
+        if (resetUser) { showPage('reset-password-page'); } else { toast("Error!"); }  
     }  
 
     function handleResetPassword() {  
         const p1 = document.getElementById('new-pass-1').value;  
         const p2 = document.getElementById('new-pass-2').value;  
-        if (p1 !== p2) return toast("Şifreler uyuşmuyor!");  
+        if (p1 === resetUser.p) return toast("Cannot be same!");
+        if (p1 !== p2) return toast("No match!");  
         resetUser.p = p1;  
         localStorage.setItem('proSoccerUsers', JSON.stringify(registeredUsers));  
-        toast("Şifre Yenilendi!");  
+        toast("Done!");  
         showPage('login-page');  
     }  
 
@@ -956,7 +1292,7 @@
         TEAMS_DATA[leagueKey].forEach(team => {  
             const div = document.createElement('div');  
             div.className = 'card';  
-            div.innerHTML = `<div style="width:50px; height:50px; background:${team.color}; border-radius:50%; margin:0 auto 10px auto;"></div><h3>${team.name}</h3><p>Değer: ${team.value}M</p>`;  
+            div.innerHTML = `<div style="width:50px; height:50px; background:${team.color}; border-radius:50%; margin:0 auto 10px auto;"></div><h3>${team.name}</h3><p>${team.value}M</p>`;  
             div.onclick = () => openContract(team);  
             container.appendChild(div);  
         });  
@@ -969,7 +1305,7 @@
         document.getElementById('contract-team-name').innerText = team.name;  
         document.getElementById('contract-team-value').innerText = team.value + "M";  
         document.getElementById('contract-player-count').innerText = team.pCount;  
-        document.getElementById('contract-user-name').innerText = gameState.user ? gameState.user.u : "Misafir";  
+        document.getElementById('contract-user-name').innerText = gameState.user ? gameState.user.u : "Guest";  
         document.getElementById('contract-modal').style.display = 'flex';  
     }  
 
@@ -978,6 +1314,8 @@
     function signContract() {  
         gameState.team = selectedTeamTemp;  
         gameState.money = (gameState.team.value > 600) ? 50 : 25;  
+        gameState.currentMatchIndex = 0;
+        gameState.season = 1;
         generateMyPlayers();  
         createFixture();  
         closeModal();  
@@ -1000,16 +1338,37 @@
     function createFixture() {  
         const leagueTeams = TEAMS_DATA[gameState.league];  
         gameState.fixture = [];  
-        leagueTeams.forEach(t => { if(t.name !== gameState.team.name) gameState.fixture.push({ opponent: t, home: true }); });  
-        leagueTeams.forEach(t => { gameState.standings[t.name] = { p:0, w:0, d:0, l:0, gf:0, ga:0, av:0 }; });  
+        gameState.standings = {};
+
+        for (let lig in TEAMS_DATA) {
+            TEAMS_DATA[lig].forEach(t => { 
+                gameState.standings[t.name] = { p:0, w:0, d:0, l:0, gf:0, ga:0, av:0, lig: lig }; 
+            });
+        }
+
+        for(let i=0; i<20; i++) {
+            let opp = leagueTeams[randomInt(0, leagueTeams.length - 1)];
+            while(opp.name === gameState.team.name) {
+                opp = leagueTeams[randomInt(0, leagueTeams.length - 1)];
+            }
+            gameState.fixture.push({ opponent: opp, home: (i % 2 === 0) });
+        }
     }  
 
     function updateDashboard() {  
         document.getElementById('user-money').innerText = gameState.money.toFixed(1);  
+        document.getElementById('match-count-display').innerText = gameState.currentMatchIndex + 1;
+
         if(gameState.currentMatchIndex < gameState.fixture.length) {  
             const match = gameState.fixture[gameState.currentMatchIndex];  
             document.getElementById('home-name').innerText = match.home ? gameState.team.name : match.opponent.name;  
             document.getElementById('away-name').innerText = !match.home ? gameState.team.name : match.opponent.name;  
+            
+            const sorted = Object.keys(gameState.standings)
+                .filter(n => gameState.standings[n].lig === gameState.league)
+                .sort((a,b) => gameState.standings[b].p - gameState.standings[a].p);
+            const rank = sorted.indexOf(match.opponent.name) + 1;
+            document.getElementById('opponent-rank').innerText = rank + ".";
         }  
         renderMiniStandings();  
     }  
@@ -1017,16 +1376,23 @@
     function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }  
 
     function toggleSpeed() {  
-        if(matchSpeed === 1000) { matchSpeed = 500; document.getElementById('speed-btn').innerText = "HIZ: 2X"; } 
-        else if(matchSpeed === 500) { matchSpeed = 250; document.getElementById('speed-btn').innerText = "HIZ: 4X"; }
-        else { matchSpeed = 1000; document.getElementById('speed-btn').innerText = "HIZ: 1X"; }  
+        if(matchSpeed === 1000) { matchSpeed = 500; document.getElementById('speed-btn').innerText = gameState.settings.lang === 'tr' ? "HIZ: 2X" : "SPEED: 2X"; } 
+        else if(matchSpeed === 500) { matchSpeed = 250; document.getElementById('speed-btn').innerText = gameState.settings.lang === 'tr' ? "HIZ: 4X" : "SPEED: 4X"; }
+        else { matchSpeed = 1000; document.getElementById('speed-btn').innerText = gameState.settings.lang === 'tr' ? "HIZ: 1X" : "SPEED: 1X"; }  
         if(isMatchRunning) { clearInterval(matchInterval); runMatchLoop(); }  
     }  
 
     function goToMatchScreen() {  
         gameState.lastMatchTime = Date.now();  
         showPage('match-screen-page');  
-        const match = gameState.fixture[gameState.currentMatchIndex];  
+        
+        let match;
+        if(gameState.isCupActive) {
+            match = { opponent: { name: gameState.cupOpponent.name }, home: true };
+        } else {
+            match = gameState.fixture[gameState.currentMatchIndex];
+        }
+
         document.getElementById('m-home-name').innerText = match.home ? gameState.team.name : match.opponent.name;  
         document.getElementById('m-away-name').innerText = !match.home ? gameState.team.name : match.opponent.name;  
         document.getElementById('score-home').innerText = "0";  
@@ -1037,13 +1403,17 @@
         document.getElementById('end-match-btn').style.display = 'none';  
         document.getElementById('match-stats-btn').style.display = 'none';  
         document.getElementById('match-stats-panel').style.display = 'none';  
-        addCommentary("man", `Ertem Şener: Merhabalar! Müthiş bir maç bizi bekliyor.`);  
+        
+        const comm = gameState.settings.lang === 'tr' ? "Ertem Şener: Merhabalar! Müthiş bir maç bizi bekliyor." : "Commentator: Hello! A great match is about to start.";
+        addCommentary("man", comm);  
     }  
 
     function startMatchSimulation() {  
         document.getElementById('start-simulation-btn').style.display = 'none';  
         currentMatchSecond = 0; homeScore = 0; awayScore = 0;  
         matchEvents = { goals: [], assists: [], redCards: [] };
+        gameState.moral = 0;
+        gameState.halfTimeTacticUsed = false;
         isMatchRunning = true;  
         isSecondHalf = false;  
         playSound('sound-whistle');
@@ -1059,8 +1429,12 @@
     }
 
     function runMatchLoop() {  
-        const match = gameState.fixture[gameState.currentMatchIndex];  
-        const myWinProb = (gameState.team.value / (gameState.team.value + match.opponent.value)) * 100;  
+        let match;
+        if(gameState.isCupActive) {
+            match = { opponent: gameState.cupOpponent, home: true };
+        } else {
+            match = gameState.fixture[gameState.currentMatchIndex];
+        }
 
         matchInterval = setInterval(() => {  
             currentMatchSecond++;  
@@ -1071,23 +1445,27 @@
                 isMatchRunning = false;
                 document.getElementById('half-time-controls').style.display = 'block';
                 playSound('sound-whistle'); 
-                addCommentary("man", "Ertem: İlk yarı bitti!");
+                addCommentary("man", gameState.settings.lang === 'tr' ? "Ertem: İlk yarı bitti!" : "Comm: Half time!");
                 return;
             }  
-              
+
+            let myProb = (gameState.team.value / (gameState.team.value + match.opponent.value)) * 100;
+            
             if(Math.random() < 0.06) {  
-                if(Math.random() * 100 < myWinProb) {  
+                if(Math.random() * 100 < myProb) {  
                     if(match.home) homeScore++; else awayScore++;  
                     playSound('sound-goal');
-                    const scorer = gameState.players[randomInt(0, 10)];
-                    const asister = gameState.players[randomInt(0, 10)];
+                    gameState.moral += 1; 
+                    const scorer = gameState.players[randomInt(0, gameState.players.length-1)];
                     matchEvents.goals.push(scorer.name);
-                    matchEvents.assists.push(asister.name);
-                    addCommentary("man", `GOOOOOL! ${scorer.name} attı!`);  
+                    const txt = gameState.settings.lang === 'tr' ? `GOOOOOL! ${scorer.name} attı!` : `GOAL! ${scorer.name} scores!`;
+                    addCommentary("man", `${txt} (${homeScore}-${awayScore})`);  
                 } else {  
                     if(match.home) awayScore++; else homeScore++;  
                     playSound('sound-goal'); 
-                    addCommentary("man", "Eyvah! Rakip golü buldu...");  
+                    gameState.moral -= 1;
+                    const txt = gameState.settings.lang === 'tr' ? "Eyvah! Rakip golü buldu..." : "Oh no! Opponent scores...";
+                    addCommentary("man", txt);  
                 }  
                 updateScore(homeScore, awayScore);  
             }
@@ -1103,7 +1481,6 @@
         }, matchSpeed);  
     }  
 
-    let homeScore = 0; let awayScore = 0;  
     function updateScore(h, a) { document.getElementById('score-home').innerText = h; document.getElementById('score-away').innerText = a; }  
 
     function addCommentary(person, text) {  
@@ -1115,19 +1492,185 @@
     }  
 
     function finishMatch(h, a) {  
+        if(gameState.isCupActive) {
+            handleCupMatchResult(h, a);
+            return;
+        }
+
         const match = gameState.fixture[gameState.currentMatchIndex];  
         const myScore = match.home ? h : a;  
         const oppScore = match.home ? a : h;  
+        
         if(myScore > oppScore) gameState.money += 1.5;  
-        updateStandings(gameState.team.name, myScore, oppScore);  
-        updateStandings(match.opponent.name, oppScore, myScore);  
+        
+        updateStandingData(gameState.team.name, myScore, oppScore);  
+        updateStandingData(match.opponent.name, oppScore, myScore);  
+        
+        simulateBotMatches();
+
         gameState.currentMatchIndex++;  
+        document.getElementById('stats-goals').innerText = (gameState.settings.lang === 'tr' ? 'Goller: ' : 'Goals: ') + matchEvents.goals.join(", ");
         
-        document.getElementById('stats-goals').innerText = `Goller: ${matchEvents.goals.join(", ") || 'Yok'}`;
-        document.getElementById('stats-assists').innerText = `Asistler: ${matchEvents.assists.join(", ") || 'Yok'}`;
-        document.getElementById('stats-cards').innerText = `Kırmızı Kartlar: ${matchEvents.redCards.join(", ") || 'Yok'}`;
-        
+        if(gameState.currentMatchIndex >= 20) {
+            setTimeout(showLeagueFinishPage, 1500);
+        }
+
         saveGame(); 
+    }  
+
+    function showLeagueFinishPage() {
+        const sorted = Object.keys(gameState.standings)
+            .filter(n => gameState.standings[n].lig === gameState.league)
+            .sort((a,b) => gameState.standings[b].p - gameState.standings[a].p);
+        
+        const myRank = sorted.indexOf(gameState.team.name) + 1;
+        const rewardList = LEAGUE_REWARDS[gameState.league];
+        const reward = rewardList[myRank - 1] || 1;
+        
+        gameState.money += reward;
+        
+        let cupName = "ProSoccerCup";
+        if(gameState.league === "super-lig") cupName = "Süper Pro Soccer";
+        else if(gameState.league === "la-liga") cupName = "La Pro Soccer";
+        else if(gameState.league === "premier-lig") cupName = "Premier Pro Soccer";
+
+        const title = gameState.settings.lang === 'tr' ? (myRank === 1 ? `ŞAMPİYON! ${cupName}` : `TEBRİKLER! ${cupName}`) : (myRank === 1 ? `CHAMPION! ${cupName}` : `CONGRATS! ${cupName}`);
+        document.getElementById('finish-title').innerText = title;
+        document.getElementById('finish-rank-text').innerText = (gameState.settings.lang === 'tr' ? `Ligi ${myRank}. Sırada Bitirdiniz!` : `You finished rank ${myRank}!`);
+        document.getElementById('finish-reward-text').innerText = (gameState.settings.lang === 'tr' ? `Ödülünüz: ${reward}M` : `Reward: ${reward}M`);
+        
+        document.getElementById('league-finish-page').style.display = 'flex';
+        document.getElementById('league-finish-page').classList.add('active');
+        saveGame();
+    }
+
+    function closeLeagueFinishPage() {
+        document.getElementById('league-finish-page').style.display = 'none';
+        document.getElementById('league-finish-page').classList.remove('active');
+        checkCupQualification();
+    }
+
+    function checkCupQualification() {
+        const sorted = Object.keys(gameState.standings)
+            .filter(n => gameState.standings[n].lig === gameState.league)
+            .sort((a,b) => gameState.standings[b].p - gameState.standings[a].p);
+        const myRank = sorted.indexOf(gameState.team.name) + 1;
+
+        gameState.isCupActive = true;
+        gameState.cupStage = "Yarı Final";
+
+        if(myRank <= 2) {
+            startCupDraw(gameState.settings.lang === 'tr' ? "ŞAMPİYONLAR LİGİ" : "CHAMPIONS LEAGUE", "cl-theme");
+        } else if(myRank <= 4) {
+            startCupDraw(gameState.settings.lang === 'tr' ? "AVRUPA LİGİ" : "EUROPA LEAGUE", "el-theme");
+        } else if(myRank <= 6) {
+            startCupDraw(gameState.settings.lang === 'tr' ? "KONFERANS LİGİ" : "CONFERENCE LEAGUE", "conf-theme");
+        } else {
+            toast(gameState.settings.lang === 'tr' ? "Yeni sezon başlıyor!" : "New season starting!");
+            startNewSeason();
+        }
+    }
+
+    function startCupDraw(cupName, themeClass) {
+        gameState.cupName = cupName;
+        const drawPage = document.getElementById('cup-draw-page');
+        drawPage.className = `page active ${themeClass}`;
+        document.getElementById('cup-name-draw').innerText = cupName;
+        document.getElementById('draw-result').innerText = gameState.settings.lang === 'tr' ? "Kura Çekiliyor..." : "Drawing Lots...";
+        document.getElementById('start-cup-match-btn').style.display = "none";
+
+        setTimeout(() => {
+            const opps = TEAMS_DATA["premier-lig"].concat(TEAMS_DATA["la-liga"]);
+            gameState.cupOpponent = opps[randomInt(0, opps.length-1)];
+            document.getElementById('draw-result').innerText = `${gameState.team.name} vs ${gameState.cupOpponent.name}`;
+            document.getElementById('start-cup-match-btn').style.display = "inline-block";
+        }, 3000);
+    }
+
+    function handleCupMatchResult(h, a) {
+        const win = h > a;
+        let reward = 0;
+
+        if(gameState.cupStage === "Yarı Final") {
+            if(win) {
+                gameState.cupStage = "Final";
+                reward = (gameState.cupName.includes("ŞAMPİYONLAR") || gameState.cupName.includes("CHAMPIONS")) ? 15 : 10;
+                gameState.money += reward;
+                const title = gameState.settings.lang === 'tr' ? "FİNALE ÇIKTINIZ!" : "REACHED THE FINAL!";
+                showCupResult(title, (gameState.settings.lang === 'tr' ? `Tebrikler! ${reward}M kazandınız.` : `Congrats! Won ${reward}M.`), "cl-theme", false);
+            } else {
+                reward = 8;
+                gameState.money += reward;
+                const title = gameState.settings.lang === 'tr' ? "ELENDİNİZ!" : "ELIMINATED!";
+                showCupResult(title, (gameState.settings.lang === 'tr' ? `Yarı finalde veda ettiniz. ${reward}M kazandınız.` : `Out at semi-finals. Won ${reward}M.`), "eliminated-theme", true);
+            }
+        } else {
+            if(win) {
+                reward = (gameState.cupName.includes("ŞAMPİYONLAR") || gameState.cupName.includes("CHAMPIONS")) ? 50 : 30;
+                gameState.money += reward;
+                const title = gameState.settings.lang === 'tr' ? "ŞAMPİYON!" : "CHAMPION!";
+                showCupResult(title, (gameState.settings.lang === 'tr' ? `KUPAYI KAZANDINIZ! ${reward}M ödül aldınız.` : `WON THE CUP! Received ${reward}M.`), "cl-theme", true, true);
+            } else {
+                reward = 20;
+                gameState.money += reward;
+                const title = gameState.settings.lang === 'tr' ? "FİNALDE KAYBETTİNİZ!" : "LOST THE FINAL!";
+                showCupResult(title, (gameState.settings.lang === 'tr' ? `İkinci oldunuz. ${reward}M kazandınız.` : `Runner-up. Won ${reward}M.`), "eliminated-theme", true);
+            }
+        }
+        saveGame();
+    }
+
+    function showCupResult(title, info, theme, isEnd, isWinner = false) {
+        const resPage = document.getElementById('cup-result-page');
+        resPage.className = `page active ${theme}`;
+        document.getElementById('cup-res-title').innerText = title;
+        document.getElementById('cup-res-info').innerText = info;
+        document.getElementById('cup-res-money').style.display = "block";
+        
+        const btn = document.getElementById('cup-action-btn');
+        if(isEnd) {
+            btn.innerText = gameState.settings.lang === 'tr' ? "YENİ SEZONA BAŞLA" : "START NEW SEASON";
+            btn.onclick = startNewSeason;
+        } else {
+            btn.innerText = gameState.settings.lang === 'tr' ? "FİNAL MAÇINA GİT" : "GO TO FINAL";
+            btn.onclick = () => {
+                // Bug Fix: Final kurasını başlat
+                startCupDraw(gameState.cupName, theme);
+            };
+        }
+        showPage('cup-result-page');
+    }
+
+    function startNewSeason() {
+        gameState.season++;
+        gameState.currentMatchIndex = 0;
+        gameState.isCupActive = false;
+        createFixture();
+        updateDashboard();
+        showPage('dashboard-page');
+        toast(gameState.settings.lang === 'tr' ? `${gameState.season}. Sezon Başladı!` : `Season ${gameState.season} Started!`);
+        saveGame();
+    }
+
+    function simulateBotMatches() {
+        for(let lig in TEAMS_DATA) {
+            let teams = TEAMS_DATA[lig].filter(t => t.name !== gameState.team.name);
+            for(let i=0; i < teams.length; i+=2) {
+                if(teams[i+1]) {
+                    const s1 = randomInt(0, 3);
+                    const s2 = randomInt(0, 3);
+                    updateStandingData(teams[i].name, s1, s2);
+                    updateStandingData(teams[i+1].name, s2, s1);
+                }
+            }
+        }
+    }
+
+    function updateStandingData(teamName, gf, ga) {  
+        const s = gameState.standings[teamName];  
+        if(!s) return;
+        s.gf += gf; s.ga += ga; s.av += (gf - ga);  
+        if(gf > ga) { s.p += 3; s.w++; } else if(gf === ga) { s.p += 1; s.d++; } else { s.l++; }  
     }  
 
     function showMatchStats() {  
@@ -1135,13 +1678,11 @@
         panel.style.display = panel.style.display === 'none' ? 'block' : 'none';  
     }  
 
-    function updateStandings(teamName, gf, ga) {  
-        const s = gameState.standings[teamName];  
-        s.gf += gf; s.ga += ga; s.av += (gf - ga);  
-        if(gf > ga) { s.p += 3; s.w++; } else if(gf === ga) { s.p += 1; s.d++; } else { s.l++; }  
+    function endMatch() { 
+        if(gameState.isCupActive) return; 
+        showPage('dashboard-page'); 
+        updateDashboard(); 
     }  
-
-    function endMatch() { showPage('dashboard-page'); updateDashboard(); }  
 
     let activeSlot = null;
     function showFormation() { 
@@ -1150,13 +1691,19 @@
     }
 
     function updatePitchUI() {
-        for(let pos in gameState.lineup) {
-            const slot = document.getElementById(`pos-${pos}`);
-            if(slot && gameState.lineup[pos]) {
-                slot.innerText = gameState.lineup[pos].name.split(" ")[0];
-                slot.classList.add('occupied');
+        const slots = ["KL", "SLB", "STP1", "STP2", "SĞB", "OS1", "OS2", "SLK", "SĞK", "SNT1", "SNT2"];
+        slots.forEach(id => {
+            const slot = document.getElementById(`pos-${id}`);
+            if(slot) {
+                if(gameState.lineup[id]) {
+                    slot.innerText = gameState.lineup[id].name.split(" ")[0];
+                    slot.classList.add('occupied');
+                } else {
+                    slot.innerText = id.replace(/[0-9]/g, '');
+                    slot.classList.remove('occupied');
+                }
             }
-        }
+        });
     }
 
     function selectPlayerForPos(posId) {
@@ -1165,12 +1712,34 @@
         const list = document.getElementById('available-players-list');
         list.innerHTML = "";
         
-        gameState.players.forEach(p => {
-            const div = document.createElement('div');
-            div.className = "player-list-item";
-            div.innerHTML = `<span>${p.name} (${p.ovr})</span> <button class="btn btn-primary" style="width:auto;" onclick="assignPlayerToPos(${p.id})">Seç</button>`;
-            list.appendChild(div);
-        });
+        const categories = {
+            "Kaleciler": ["KL"],
+            "Defanslar": ["STP", "SLB", "SĞB"],
+            "Orta Sahalar": ["OS", "OOS", "DOS"],
+            "Forvetler": ["SNT", "SLK", "SĞK"]
+        };
+
+        const usedIds = Object.values(gameState.lineup).map(p => p.id);
+
+        for (let catName in categories) {
+            const catHeader = document.createElement('div');
+            catHeader.className = "pos-header";
+            catHeader.innerText = catName;
+            list.appendChild(catHeader);
+
+            const catPlayers = gameState.players.filter(p => categories[catName].includes(p.pos) && !usedIds.includes(p.id));
+            
+            if(catPlayers.length === 0) {
+                list.innerHTML += `<p style="font-size:10px; color:gray; padding-left:10px;">Uygun oyuncu yok</p>`;
+            }
+
+            catPlayers.forEach(p => {
+                const div = document.createElement('div');
+                div.className = "player-list-item";
+                div.innerHTML = `<span><b>[${p.pos}]</b> ${p.name} (${p.ovr})</span> <button class="btn btn-primary" style="width:auto;" onclick="assignPlayerToPos(${p.id})">Seç</button>`;
+                list.appendChild(div);
+            });
+        }
         modal.style.display = 'flex';
     }
 
@@ -1190,9 +1759,15 @@
         gameState.tactics.marking = document.getElementById('tactic-marking').value;
         gameState.tactics.aggression = document.getElementById('tactic-aggression').value;
         gameState.tactics.press = document.getElementById('tactic-press').value;
+        
+        if(!isMatchRunning && currentMatchSecond === 45) {
+            gameState.halfTimeTacticUsed = true;
+        }
+
         saveGame(); 
-        toast("Taktikler kaydedildi!");
-        showPage('dashboard-page');
+        toast("Saved!");
+        if(isMatchRunning || currentMatchSecond === 45) showPage('match-screen-page');
+        else showPage('dashboard-page');
     }
 
     function showSquad() {  
@@ -1207,12 +1782,15 @@
         gameState.players.forEach(p => {  
             const div = document.createElement('div');  
             div.className = 'player-list-item';  
-            div.innerHTML = `<div style="display:flex; align-items:center; gap:10px;"><div class="overall-badge">${p.ovr}</div><div><b>${p.name}</b></div></div><button class="btn btn-secondary" style="width:auto;" onclick="sellPlayer(${p.id}, ${p.value})">SAT</button>`;  
+            div.innerHTML = `<div style="display:flex; align-items:center; gap:10px;"><div class="overall-badge">${p.ovr}</div><div><b>[${p.pos}] ${p.name}</b></div></div><button class="btn btn-secondary" style="width:auto;" onclick="sellPlayer(${p.id}, ${p.value})">SAT</button>`;  
             container.appendChild(div);  
         });  
     }  
 
     function sellPlayer(id, val) {
+        for(let key in gameState.lineup) {
+            if(gameState.lineup[key] && gameState.lineup[key].id === id) delete gameState.lineup[key];
+        }
         gameState.players = gameState.players.filter(p => p.id !== id);
         gameState.money += val;
         saveGame(); 
@@ -1225,48 +1803,81 @@
         document.getElementById('transfer-money').innerText = gameState.money.toFixed(1);
         const container = document.getElementById('transfer-list-container');
         container.innerHTML = "";
-        for(let i=0; i<4; i++) {
+        const tPos = ["KL", "STP", "SLB", "SĞB", "OS", "SNT"];
+        for(let i=0; i<6; i++) {
             const name = PLAYER_NAMES[randomInt(0, PLAYER_NAMES.length-1)];
             const val = randomInt(10, 60);
+            const pos = tPos[randomInt(0, 5)];
             const div = document.createElement('div');
             div.className = "player-list-item";
-            div.innerHTML = `<span>${name} (${val}M)</span> <button class="btn btn-primary" style="width:auto;" onclick="buyPlayer('${name}', ${val})">AL</button>`;
+            div.innerHTML = `<span><b>[${pos}]</b> ${name} (${val}M)</span> <button class="btn btn-primary" style="width:auto;" onclick="buyPlayer('${name}', ${val}, '${pos}')">AL</button>`;
             container.appendChild(div);
         }
     }
 
-    function buyPlayer(name, price) {
+    function buyPlayer(name, price, pos) {
         if(gameState.money >= price) {
             gameState.money -= price;
-            gameState.players.push({ id: Date.now(), name: name + " " + SURNAMES[randomInt(0, 19)], pos: "OS", ovr: randomInt(75, 85), value: price });
+            gameState.players.push({ id: Date.now(), name: name + " " + SURNAMES[randomInt(0, 19)], pos: pos, ovr: randomInt(75, 85), value: price });
             saveGame(); 
-            toast("Transfer başarılı!");
+            toast("Success!");
             showTransferList();
-        } else toast("Para yetersiz!");
+        } else toast("No Money!");
     }
 
     function showStandings() {  
         showPage('standings-page');  
+        renderStandings(gameState.league);
+    }  
+
+    function renderStandings(ligKey) {
         const tbody = document.getElementById('standings-body');  
         tbody.innerHTML = "";  
-        const sorted = Object.keys(gameState.standings).sort((a,b) => gameState.standings[b].p - gameState.standings[a].p);  
+        const sorted = Object.keys(gameState.standings)
+            .filter(n => gameState.standings[n].lig === ligKey)
+            .sort((a,b) => gameState.standings[b].p - gameState.standings[a].p);  
+        
         sorted.forEach((name, i) => {  
             const t = gameState.standings[name];  
             tbody.innerHTML += `<tr><td>${i+1}</td><td>${name}</td><td>${t.w+t.d+t.l}</td><td><b>${t.p}</b></td><td>${t.av}</td></tr>`;  
-        });  
-    }  
+        });
+    }
 
     function renderMiniStandings() {
         const div = document.getElementById('mini-standings');
         if(!div) return;
         div.innerHTML = "";
-        const sorted = Object.keys(gameState.standings).sort((a,b) => gameState.standings[b].p - gameState.standings[a].p).slice(0,5);
+        const sorted = Object.keys(gameState.standings)
+            .filter(n => gameState.standings[n].lig === gameState.league)
+            .sort((a,b) => gameState.standings[b].p - gameState.standings[a].p).slice(0,5);
         sorted.forEach((n, i) => { div.innerHTML += `<div style="font-size:12px; border-bottom:1px solid #333;">${i+1}. ${n} - ${gameState.standings[n].p}p</div>`; });
     }
 
     function randomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }  
-    function logout() { location.reload(); }
+    
+    function logout() { 
+        const modal = document.getElementById('logout-confirm-modal');
+        const msg = document.getElementById('logout-message');
+        const btn = document.getElementById('logout-primary-btn');
+
+        if(!gameState.user) {
+            msg.innerText = gameState.settings.lang === 'tr' ? "Misafir hesabında çıkış yaparsanız tüm ilerlemeniz kaybolur." : "All progress will be lost on Guest account.";
+            btn.innerText = gameState.settings.lang === 'tr' ? "Devam Et" : "Proceed";
+        } else {
+            msg.innerText = gameState.settings.lang === 'tr' ? "Çıkış yapmak istediğinize emin misiniz?" : "Are you sure you want to logout?";
+            btn.innerText = gameState.settings.lang === 'tr' ? "Evet, çıkış yap" : "Yes, logout";
+        }
+        modal.style.display = 'flex';
+    }
+
+    function confirmLogout(action) {
+        if(action === 'proceed') {
+            location.reload(); 
+        } else {
+            document.getElementById('logout-confirm-modal').style.display = 'none';
+        }
+    }
 
 </script>  
 </body>  
-</html>
+    </html>
